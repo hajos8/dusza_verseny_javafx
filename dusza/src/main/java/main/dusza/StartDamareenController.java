@@ -38,9 +38,16 @@ public class StartDamareenController implements Initializable {
 
     @FXML
     protected void handlePlayButton() {
-        playButton.setVisible(false);
-        titleLabel.setVisible(false);
-        usernameLabel.setVisible(false);
+
+        String username = "Player";
+
+        if (!usernameTextField.getText().isEmpty()) {
+            playButton.setVisible(false);
+            titleLabel.setVisible(false);
+            usernameLabel.setVisible(false);
+        }
+
+
     }
 }
 

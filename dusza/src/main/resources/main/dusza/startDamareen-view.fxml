@@ -47,7 +47,7 @@
             <Font size="15.0" />
          </font>
       </MFXTextField>
-      <MFXButton id="playButton" fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="253.0" onAction="#handlePlayButton" text="Játék" textAlignment="CENTER" visible="false">
+      <MFXButton id="playButton" fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="253.0" onAction="#handlePlayButton" text="Játék indítása" textAlignment="CENTER" visible="false">
          <font>
             <Font size="20.0" />
          </font>
