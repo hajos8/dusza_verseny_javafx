@@ -2,7 +2,10 @@ package main.dusza.render;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -11,6 +14,7 @@ import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Player;
 import main.dusza.main.GameData;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,14 +22,16 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
     @FXML public HBox cardsHBox;
     @FXML public MFXButton nextButton;
+    @FXML public Label usernameLabel;
     @FXML private AnchorPane collectionPane;
 
-    Player currentPlayer = GameData.PlayersList.getFirst();
-    ArrayList<Card> playerCollection = currentPlayer.getCollection();
+    public static Player currentPlayer = GameData.PlayersList.getFirst();
+    public static ArrayList<Card> playerCollection = currentPlayer.getCollection();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cardGenerator();
+        usernameLabel.setText(currentPlayer.getName());
     }
 
     protected void cardGenerator () {
@@ -47,8 +53,16 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    protected void handleNextButton() {
+    protected void handleNextButton() throws IOException {
 
-
+        URL fxml = getClass().getResource("/main/dusza/dungeons-view.fxml");
+        if (fxml != null) {
+            Parent root = FXMLLoader.load(fxml);
+            Scene scene = nextButton.getScene();
+            scene.setRoot(root);
+        }
+        else {
+            System.err.println("Fxml file not found!");
+        }
     }
 }

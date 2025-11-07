@@ -7,6 +7,7 @@ module main.dusza {
     requires org.kordamp.ikonli.javafx;
     requires MaterialFX;
     requires atlantafx.base;
+    requires javafx.graphics;
 
     opens main.dusza to javafx.fxml;
     exports main.dusza;
