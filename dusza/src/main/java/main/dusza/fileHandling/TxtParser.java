@@ -6,17 +6,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TxtParser {
+
+    public static boolean isRunningTest = false;
+
     public static ArrayList<String> parseTxt(String path){
         ArrayList<String> list = new ArrayList<>();
 
         try{
-            BufferedReader reader = new BufferedReader(new FileReader(path));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                list.add(line);
+            if(!isRunningTest){
+                BufferedReader reader = new BufferedReader(new FileReader(path));
+
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+                    list.add(line);
+                }
+                reader.close();
             }
-            reader.close();
         }
+
         catch (IOException e) {
             e.printStackTrace();
         }
