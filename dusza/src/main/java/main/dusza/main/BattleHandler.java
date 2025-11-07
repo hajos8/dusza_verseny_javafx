@@ -5,77 +5,142 @@ import main.dusza.gameElements.Dungeon;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class BattleHandler {
     public static void playCard(String name, Card card) {
         switch (name){
             case "jatekos" ->{
-                Battle.playerHand.remove(card);
-                Battle.playerTable.add(card);
+                BattleRoundManager.playerHand.remove(card);
+                BattleRoundManager.playerTable.add(card);
+
             }
             case "kazamata" -> {
-                Battle.enemyHand.remove(card);
-                Battle.enemyTable.add(card);
+                BattleRoundManager.enemyHand.remove(card);
+                BattleRoundManager.enemyTable.add(card);
             }
         }
+
+        BattleRoundManager.logBuilder
+                .append("kijatszik")
+                .append(";")
+                .append(card.getName())
+                .append(";")
+                .append(card.getDmg())
+                .append(";")
+                .append(card.getHp())
+                .append(";")
+                .append(card.getType())
+                .append("\n");
     }
 
     //attack
     public static void attack(String attackingPlayer, Card attacker, Card defender){
+        BattleRoundManager.logBuilder
+                .append("tamad")
+                .append(";")
+                .append(attacker.getName())
+                .append(";");
+
         switch (attacker.getType()){
             case "tuz" -> {
                 switch (defender.getType()){
-                    case "levego" -> defender.setHp(defender.getHp() - attacker.getDmg() / 2);
-                    case "fold" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "viz" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "tuz" -> defender.setHp(defender.getHp() - attacker.getDmg());
+                    case "levego" -> {
+                            defender.setHp(defender.getHp() - attacker.getDmg() / 2);
+                            BattleRoundManager.logBuilder.append((attacker.getDmg() / 2)).append(";");
+                    }
+                    case "fold", "viz" -> {
+                            defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                            BattleRoundManager.logBuilder.append((attacker.getDmg() * 2)).append(";");
+                    }
+                    case "tuz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg());
+                        BattleRoundManager.logBuilder.append(attacker.getDmg()).append(";");
+                    }
                 }
             }
 
             case "viz" -> {
                 switch (defender.getType()){
-                    case "levego" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "fold" -> defender.setHp(defender.getHp() - attacker.getDmg() / 2);
-                    case "viz" -> defender.setHp(defender.getHp() - attacker.getDmg());
-                    case "tuz" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                    case "levego", "tuz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() * 2)).append(";");
+                    }
+                    case "fold" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() / 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() / 2)).append(";");
+                    }
+                    case "viz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg());
+                        BattleRoundManager.logBuilder.append(attacker.getDmg()).append(";");
+                    }
                 }
             }
 
             case "levego" -> {
                 switch (defender.getType()){
-                    case "levego" -> defender.setHp(defender.getHp() - attacker.getDmg());
-                    case "fold" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "viz" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "tuz" -> defender.setHp(defender.getHp() - attacker.getDmg() / 2);
+                    case "levego" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg());
+                        BattleRoundManager.logBuilder.append(attacker.getDmg()).append(";");
+                    }
+                    case "fold", "viz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() * 2)).append(";");
+                    }
+                    case "tuz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() / 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() / 2)).append(";");
+                    }
                 }
             }
 
             case "fold" -> {
                 switch (defender.getType()){
-                    case "levego" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
-                    case "fold" -> defender.setHp(defender.getHp() - attacker.getDmg());
-                    case "viz" -> defender.setHp(defender.getHp() - attacker.getDmg() / 2);
-                    case "tuz" -> defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                    case "levego", "tuz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() * 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() * 2)).append(";");
+                    }
+                    case "fold" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg());
+                        BattleRoundManager.logBuilder.append(attacker.getDmg()).append(";");
+                    }
+                    case "viz" -> {
+                        defender.setHp(defender.getHp() - attacker.getDmg() / 2);
+                        BattleRoundManager.logBuilder.append((attacker.getDmg() / 2)).append(";");
+                    }
                 }
             }
         }
+        BattleRoundManager.logBuilder
+                .append(defender.getName())
+                .append(";")
+                .append(Math.max(defender.getHp(), 0))
+                .append("\n");
 
         if(defender.getHp() <= 0){
             switch (attackingPlayer){
-                case "jatekos" -> Battle.enemyTable.remove(defender);
-                case "kazamata" -> Battle.playerTable.remove(defender);
+                case "jatekos" -> BattleRoundManager.enemyTable.remove(defender);
+                case "kazamata" -> BattleRoundManager.playerTable.remove(defender);
             }
         }
     }
 
     //setting up the decks
-    public static void fillUpBattleHands(String playerName, String dungeonName){
-        Battle.playerHand = GameData.PlayersList.getFirst().getDeck();
+    public static void fillUpBattleHands(String dungeonName){
+        // deep-copy deck
+        for(Card card : GameData.PlayersList.getFirst().getDeck()){
+            BattleRoundManager.playerHand
+                    .add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
+        }
 
         //dungeon deck setup
         for(Dungeon dungeon : GameData.worldDungeonList){
             if(Objects.equals(dungeon.getName(), dungeonName)){
-                Battle.enemyHand = dungeon.getDungeonDeck();
+                // deep-copy deck
+                for(Card card : dungeon.getDungeonDeck()){
+                    BattleRoundManager.enemyHand
+                            .add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
+                }
                 break;
             }
         }
