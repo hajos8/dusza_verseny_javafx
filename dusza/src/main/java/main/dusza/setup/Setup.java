@@ -1,10 +1,10 @@
 package main.dusza.setup;
 
 import main.dusza.fileHandling.TxtParser;
-import main.dusza.setup.elements.Card;
-import main.dusza.setup.elements.Dungeon;
-import main.dusza.setup.elements.LeaderCard;
-import main.dusza.setup.elements.Player;
+import main.dusza.gameElements.Card;
+import main.dusza.gameElements.Dungeon;
+import main.dusza.gameElements.LeaderCard;
+import main.dusza.gameElements.Player;
 
 import java.util.ArrayList;
 

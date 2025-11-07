@@ -1,4 +1,4 @@
-package main.dusza.setup.elements;
+package main.dusza.gameElements;
 
 import java.util.ArrayList;
 
