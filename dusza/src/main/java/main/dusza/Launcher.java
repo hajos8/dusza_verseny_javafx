@@ -13,9 +13,6 @@ public class Launcher {
         //testing
         //ShowDatas.showData();
 
-        //WorldSaver.saveWorld("asd1.txt");
-        //PlayerSaver.savePlayerData("asd2.txt");
-
         Application.launch(DamareenApplication.class, args);
     }
 }
