@@ -8,7 +8,7 @@ module main.dusza {
     requires MaterialFX;
 
     opens main.dusza to javafx.fxml;
+    opens main.dusza.gameElements to javafx.fxml, org.junit.platform.commons;
     exports main.dusza;
-    exports main.dusza.render;
     opens main.dusza.render to javafx.fxml;
 }
