@@ -39,8 +39,6 @@
            </font>
        </Label>
        <HBox id="deckHBox" fx:id="deckHBox" alignment="CENTER" layoutY="333.0" prefHeight="68.0" prefWidth="154.0" />
-       <HBox id="collectionHBox" fx:id="collectionHBox" alignment="CENTER" layoutX="431.0" layoutY="328.0" prefHeight="68.0" prefWidth="164.0" />
       <Label layoutX="61.0" layoutY="319.0" text="Pakli" />
-      <Label layoutX="490.0" layoutY="310.0" prefHeight="18.0" prefWidth="83.0" text="Gyűjtemény" />
    </children>
 </AnchorPane>

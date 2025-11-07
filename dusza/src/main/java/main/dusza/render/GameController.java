@@ -28,15 +28,12 @@ public class GameController implements Initializable {
     @FXML public MFXButton nextButton;
     @FXML public Label usernameLabel;
 
-    public static String exportUsername;
-
     public static Player currentPlayer = GameData.PlayersList.getFirst();
-    ArrayList<Card> playerCollection = currentPlayer.getCollection();
     public static ArrayList<Card> playerDeck = new ArrayList<>();
+    ArrayList<Card> playerCollection = currentPlayer.getCollection();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        exportUsername = currentPlayer.getName();
         renderAll();
     }
 
