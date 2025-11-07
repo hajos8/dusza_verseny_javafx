@@ -1,6 +1,8 @@
 package main.dusza;
 
 import javafx.application.Application;
+import main.dusza.fileHandling.PlayerSaver;
+import main.dusza.fileHandling.WorldSaver;
 import main.dusza.setup.Setup;
 
 public class Launcher {
@@ -9,7 +11,10 @@ public class Launcher {
         Setup.generateWorld(path); // Generates the world from the input file
 
         //testing
-        ShowDatas.showData();
+        //ShowDatas.showData();
+
+        //WorldSaver.saveWorld("asd1.txt");
+        //PlayerSaver.savePlayerData("asd2.txt");
 
         Application.launch(DamareenApplication.class, args);
     }

@@ -5,6 +5,7 @@ import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
 import main.dusza.gameElements.LeaderCard;
 import main.dusza.gameElements.Player;
+import main.dusza.main.BattleHandler;
 
 import java.util.ArrayList;
 
@@ -41,10 +42,24 @@ public class Setup {
 
                 }
                 case "uj kazamata" -> {
-                    String dungeonName = parts[1];
-                    String type = parts[2];
+                    String type = parts[1];
+                    String dungeonName = parts[2];
                     String dungeDeckString = parts[3];
-                    String prize = parts[4];
+                    String dungeonLeaderCard = null;
+                    String prize = null;
+
+                    switch (type) {
+                        case "egyszeru" -> prize = parts[4];
+                        case "kis" -> {
+                            dungeonLeaderCard = parts[4];
+                            prize = parts[5];
+                        }
+                        case "nagy" -> {
+                            dungeonLeaderCard = parts[4];
+                            prize = "kartya";
+                        }
+                    }
+
 
                     ArrayList<Card> dungeonDeck = new ArrayList<Card>();
 
@@ -52,6 +67,15 @@ public class Setup {
 
                         for (Card card : worldCardsList) {
                             if (card.getName().equals(i)) {
+                                dungeonDeck.add(card);
+                                break;
+                            }
+                        }
+                    }
+
+                    if(dungeonLeaderCard != null){;
+                        for (Card card : worldCardsList) {
+                            if (card.getName().equals(dungeonLeaderCard)) {
                                 dungeonDeck.add(card);
                                 break;
                             }
@@ -105,13 +129,13 @@ public class Setup {
                     currentPlayer.setDeck(playerDeck);
                 }
                 case "export vilag" -> {
-                    // TODO
+
                 }
                 case "export jatekos" -> {
                     // TODO
                 }
                 case "harc" -> {
-                    // TODO
+
                 }
 
             }
