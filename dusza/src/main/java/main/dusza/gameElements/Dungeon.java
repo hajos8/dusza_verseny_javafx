@@ -1,15 +1,15 @@
-package main.dusza.setup.elements;
+package main.dusza.gameElements;
 
 import java.util.ArrayList;
 
 public class Dungeon {
-    public String DungeonName;
+    public String name;
     public String type;
     public String prize;
     public ArrayList<Card> DungeonDeck;
 
-    public String getDungeonName() {
-        return DungeonName;
+    public String getName() {
+        return name;
     }
     public String getType() {
         return type;
@@ -21,8 +21,8 @@ public class Dungeon {
         return DungeonDeck;
     }
 
-    public void setDungeonName(String name) {
-        this.DungeonName = name;
+    public void setName(String name) {
+        this.name = name;
     }
     public void setType(String type) {
         this.type = type;
@@ -32,5 +32,12 @@ public class Dungeon {
     }
     public void setDungeonDeck(ArrayList<Card> deck) {
         this.DungeonDeck = deck;
+    }
+
+    public Dungeon(String name, String type, String prize, ArrayList<Card> dungeonDeck) {
+        this.name = name;
+        this.type = type;
+        this.prize = prize;
+        this.DungeonDeck = dungeonDeck;
     }
 }

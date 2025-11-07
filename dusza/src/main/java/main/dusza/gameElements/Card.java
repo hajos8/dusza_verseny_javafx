@@ -1,4 +1,4 @@
-package main.dusza.setup.elements;
+package main.dusza.gameElements;
 
 public class Card {
     public String name;

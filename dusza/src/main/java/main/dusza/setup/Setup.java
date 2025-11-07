@@ -1,10 +1,10 @@
 package main.dusza.setup;
 
 import main.dusza.fileHandling.TxtParser;
-import main.dusza.setup.elements.Card;
-import main.dusza.setup.elements.Dungeon;
-import main.dusza.setup.elements.LeaderCard;
-import main.dusza.setup.elements.Player;
+import main.dusza.gameElements.Card;
+import main.dusza.gameElements.Dungeon;
+import main.dusza.gameElements.LeaderCard;
+import main.dusza.gameElements.Player;
 
 import java.util.ArrayList;
 
@@ -24,44 +24,49 @@ public class Setup {
                     String type = parts[4];
 
                     Card card = new Card(name, dmg, hp, type);
-                    wordCardsList.add(card);
+                    worldCardsList.add(card);
                 }
                 case "uj vezer" ->{
                     String newName = parts[1];
                     String oldName = parts[2];
+                    String powerUp = parts[3];
 
-                    for (Card card : wordCardsList) {
+                    for (Card card : worldCardsList) {
                         if (card.getName().equals(oldName)) {
-                            LeaderCard leaderCard = new LeaderCard(card.getName(), card.getDmg(), card.getHp(), card.getType(), newName);
-                            wordCardsList.add(leaderCard);
+                            LeaderCard leaderCard = new LeaderCard(card.getName(), card.getDmg(), card.getHp(), card.getType(), newName, powerUp);
+                            worldCardsList.add(leaderCard);
                             break;
                         }
                     }
 
                 }
                 case "uj kazamata" -> {
-                    Dungeon dungeon = new Dungeon();
                     String dungeonName = parts[1];
                     String type = parts[2];
-                    String prize = parts[parts.length-1];
+                    String dungeDeckString = parts[3];
+                    String prize = parts[4];
 
                     ArrayList<Card> dungeonDeck = new ArrayList<Card>();
-                    for(int i = 3; i < parts.length-2; i++){
-                        String cardName = parts[i];
 
-                        for (Card card : wordCardsList) {
-                            if (card.getName().equals(cardName)) {
+                    for(String i : dungeDeckString.split(",")){
+
+                        for (Card card : worldCardsList) {
+                            if (card.getName().equals(i)) {
                                 dungeonDeck.add(card);
+                                break;
                             }
                         }
                     }
 
-                    dungeon.setDungeonName(dungeonName);
-                    dungeon.setType(type);
-                    dungeon.setPrize(prize);
-                    dungeon.setDungeonDeck(dungeonDeck);
 
-                    worldEnemiesList.add(dungeon);
+                    Dungeon dungeon = new Dungeon(
+                            dungeonName,
+                            type,
+                            prize,
+                            dungeonDeck
+                    );
+
+                    worldDungeonList.add(dungeon);
                 }
 
                 case "uj jatekos" -> {
@@ -73,11 +78,11 @@ public class Setup {
                     String cardName = parts[1];
                     Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
 
-                    for (Card card : wordCardsList) {
+                    for (Card card : worldCardsList) {
                         if (card.getName().equals(cardName)) {
-                            ArrayList<Card> playerCollection = currentPlayer.getPlayerCollection() == null ? new ArrayList<Card>() : currentPlayer.getPlayerCollection();
+                            ArrayList<Card> playerCollection = currentPlayer.getCollection() == null ? new ArrayList<Card>() : currentPlayer.getCollection();
                             playerCollection.add(card);
-                            currentPlayer.setPlayerCollection(playerCollection);
+                            currentPlayer.setCollection(playerCollection);
                             break;
                         }
                     }
@@ -88,16 +93,16 @@ public class Setup {
 
                     Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
 
-                    ArrayList<Card> playerDeck = currentPlayer.getPlayerDeck();
+                    ArrayList<Card> playerDeck = currentPlayer.getDeck();
                     for (String cardName : cardNames) {
-                        for (Card card : wordCardsList) {
+                        for (Card card : worldCardsList) {
                             if (card.getName().equals(cardName)) {
                                 playerDeck.add(card);
                                 break;
                             }
                         }
                     }
-                    currentPlayer.setPlayerDeck(playerDeck);
+                    currentPlayer.setDeck(playerDeck);
                 }
                 case "export vilag" -> {
                     // TODO
