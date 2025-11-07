@@ -23,8 +23,4 @@ public class TxtParser {
 
         return list;
     }
-
-    public static void exportVilag(ArrayList<String> data, String path){
-        //TODO
-    }
 }
