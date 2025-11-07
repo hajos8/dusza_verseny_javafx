@@ -1,34 +1,26 @@
 package main.dusza.render;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import main.dusza.gameElements.Card;
-import main.dusza.gameElements.Player;
-import main.dusza.main.GameData;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DungeonsController implements Initializable {
     @FXML public Label usernameLabel;
     @FXML public HBox deckHBox;
     @FXML public HBox collectionHBox;
-
-    public void smallDungeon(MouseEvent mouseEvent) {
-    }
-
-    public void hardDungeon(MouseEvent mouseEvent) {
-    }
-
-    public void simpleDungeon(MouseEvent mouseEvent) {
-    }
+    @FXML public Label smallDungeonLabel;
+    @FXML public Label hardDungeonLabel;
+    @FXML public Label simpleDungeonLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,5 +66,44 @@ public class DungeonsController implements Initializable {
         VBox box = new VBox(uiCard);
         box.setId(id);
         return box;
+    }
+
+    @FXML
+    public void handleSmallDungeon () throws IOException {
+        URL fxml = getClass().getResource("/main/dusza/smallDungeon-view.fxml");
+        if (fxml != null) {
+            Parent root = FXMLLoader.load(fxml);
+            Scene scene = smallDungeonLabel.getScene();
+            scene.setRoot(root);
+        }
+        else {
+            throw new FileNotFoundException("FXML not found: /main/dusza/smallDungeon-view.fxml");
+        }
+    }
+
+    @FXML
+    public void handleHardDungeon() throws IOException {
+        URL fxml = getClass().getResource("/main/dusza/hardDungeon-view.fxml");
+        if (fxml != null) {
+            Parent root = FXMLLoader.load(fxml);
+            Scene scene = hardDungeonLabel.getScene();
+            scene.setRoot(root);
+        }
+        else {
+            throw new FileNotFoundException("FXML not found: /main/dusza/hardDungeon-view.fxml");
+        }
+    }
+
+    @FXML
+    public void handleSimpleDungeon() throws IOException {
+        URL fxml = getClass().getResource("/main/dusza/simpleDungeon-view.fxml");
+        if (fxml != null) {
+            Parent root = FXMLLoader.load(fxml);
+            Scene scene = simpleDungeonLabel.getScene();
+            scene.setRoot(root);
+        }
+        else {
+            throw new FileNotFoundException("FXML not found: /main/dusza/simpleDungeon-view.fxml");
+        }
     }
 }

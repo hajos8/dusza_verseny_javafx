@@ -122,14 +122,17 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    protected void handleNextButton() throws IOException {
+    public void handleNextButton() throws IOException {
         if (playerDeck.size() == 2) {
             URL fxml = getClass().getResource("/main/dusza/dungeons-view.fxml");
-            if (fxml == null) throw new FileNotFoundException("FXML not found: /main/dusza/dungeons-view.fxml");
-
-            Parent root = FXMLLoader.load(fxml);
-            Scene scene = nextButton.getScene();
-            scene.setRoot(root);
+            if (fxml != null) {
+                Parent root = FXMLLoader.load(fxml);
+                Scene scene = nextButton.getScene();
+                scene.setRoot(root);
+            }
+            else {
+                throw new FileNotFoundException("FXML not found: /main/dusza/dungeons-view.fxml");
+            }
         }
     }
 
