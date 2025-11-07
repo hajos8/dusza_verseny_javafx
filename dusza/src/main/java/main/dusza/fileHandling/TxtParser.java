@@ -13,7 +13,6 @@ public class TxtParser {
             BufferedReader reader = new BufferedReader(new FileReader(path));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 list.add(line);
             }
             reader.close();

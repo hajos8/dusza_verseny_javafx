@@ -15,6 +15,9 @@ public class LeaderCard extends Card{
     public String getType() {
         return type;
     }
+    public String getPowerUp() {
+        return powerUp;
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -28,16 +31,19 @@ public class LeaderCard extends Card{
     public void setType(String type) {
         this.type = type;
     }
+    public void setPowerUp(String powerUp) {
+        this.powerUp = powerUp;
+    }
 
-
-    public LeaderCard(String name, int dmg, int hp, String type, String powerUp) {
+    public LeaderCard(String name, int dmg, int hp, String type, String newName, String powerUp) {
         super(name, dmg, hp, type);
 
+        this.name = newName;
         this.powerUp = powerUp;
 
         switch(powerUp){
-            case "sebez" -> this.dmg *= 2;
-            case "elet" -> this.hp *= 2;
+            case "sebzes" -> this.dmg *= 2;
+            case "eletero" -> this.hp *= 2;
         }
     }
 }

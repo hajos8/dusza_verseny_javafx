@@ -8,6 +8,9 @@ public class Launcher {
         String path = "src/main/resources/main/dusza/in.txt";
         Setup.generateWorld(path); // Generates the world from the input file
 
+        //testing
+        ShowDatas.showData();
+
         Application.launch(DamareenApplication.class, args);
     }
 }
