@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import static main.dusza.main.GameData.*;
 
-public class RenderFunctions {
+public class Setup {
     public static void generateWorld(String path){
         ArrayList<String> data = TxtParser.parseTxt(path);
         for (String line : data) {
@@ -75,7 +75,7 @@ public class RenderFunctions {
 
                     for (Card card : wordCardsList) {
                         if (card.getName().equals(cardName)) {
-                            ArrayList<Card> playerCollection = currentPlayer.getPlayerCollection();
+                            ArrayList<Card> playerCollection = currentPlayer.getPlayerCollection() == null ? new ArrayList<Card>() : currentPlayer.getPlayerCollection();
                             playerCollection.add(card);
                             currentPlayer.setPlayerCollection(playerCollection);
                             break;

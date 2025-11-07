@@ -6,8 +6,9 @@ module main.dusza {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires MaterialFX;
-    requires main.dusza;
 
     opens main.dusza to javafx.fxml;
     exports main.dusza;
+    exports main.dusza.render;
+    opens main.dusza.render to javafx.fxml;
 }
