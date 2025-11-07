@@ -100,7 +100,18 @@ public class BattleRoundManager {
                             }
                         }
                         case "kartya" -> {
-                            //TODO draw card
+                            if(testMode){
+                                for(Card card : GameData.worldCardsList){
+                                    if(!GameData.PlayersList.getFirst().getDeck().contains(card)) {
+                                        GameData.PlayersList.getFirst().getDeck().add(card);
+                                        break;
+                                    }
+                                }
+                            }
+                            else{
+                                //TODO player chooses a card
+                            }
+
                         }
                     }
 

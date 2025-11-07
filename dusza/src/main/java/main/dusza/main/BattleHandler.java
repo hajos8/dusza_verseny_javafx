@@ -119,8 +119,20 @@ public class BattleHandler {
 
         if(defender.getHp() <= 0){
             switch (attackingPlayer){
-                case "jatekos" -> BattleRoundManager.enemyTable.remove(defender);
-                case "kazamata" -> BattleRoundManager.playerTable.remove(defender);
+                case "jatekos" -> {
+                    BattleRoundManager.enemyTable.remove(defender);
+                    if(!BattleRoundManager.enemyTable.isEmpty()){
+                        // masodik tamadas, ha van meg ellenfel a tablan
+                        BattleAI.generateTurn("jatekos");
+                    }
+                }
+                case "kazamata" -> {
+                    BattleRoundManager.playerTable.remove(defender);
+                    if(!BattleRoundManager.playerTable.isEmpty()){
+                        // masodik tamadas, ha van meg ellenfel a tablan
+                        BattleAI.generateTurn("kazamata");
+                    }
+                }
             }
         }
     }
