@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.HardDungeonController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.BigDungeonController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="14.0" text="Nehéz Kazamata" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="14.0" text="Nagy Kazamata" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

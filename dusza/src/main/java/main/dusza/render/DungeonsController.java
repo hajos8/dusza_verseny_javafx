@@ -17,30 +17,18 @@ import java.util.ResourceBundle;
 public class DungeonsController implements Initializable {
     @FXML public Label usernameLabel;
     @FXML public HBox deckHBox;
-    @FXML public HBox collectionHBox;
     @FXML public Label smallDungeonLabel;
     @FXML public Label hardDungeonLabel;
     @FXML public Label simpleDungeonLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usernameLabel.setText(GameController.exportUsername);
+        usernameLabel.setText(GameController.currentPlayer.getName());
         renderAll();
     }
 
     private void renderAll() {
-        collectionGenerator();
         deckGenerator();
-    }
-
-    private void collectionGenerator() {
-        collectionHBox.getChildren().clear();
-
-        for (Card card : GameController.currentPlayer.getCollection()) {
-            atlantafx.base.controls.Card uiCard = buildUiCard(card);
-            VBox wrapper = wrapCard(uiCard, card.getName());
-            collectionHBox.getChildren().add(wrapper);
-        }
     }
 
     private void deckGenerator() {
@@ -83,14 +71,14 @@ public class DungeonsController implements Initializable {
 
     @FXML
     public void handleHardDungeon() throws IOException {
-        URL fxml = getClass().getResource("/main/dusza/hardDungeon-view.fxml");
+        URL fxml = getClass().getResource("/main/dusza/bigDungeon-view.fxml");
         if (fxml != null) {
             Parent root = FXMLLoader.load(fxml);
             Scene scene = hardDungeonLabel.getScene();
             scene.setRoot(root);
         }
         else {
-            throw new FileNotFoundException("FXML not found: /main/dusza/hardDungeon-view.fxml");
+            throw new FileNotFoundException("FXML not found: /main/dusza/bigDungeon-view.fxml");
         }
     }
 
