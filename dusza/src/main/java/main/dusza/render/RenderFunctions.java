@@ -67,10 +67,33 @@ public class RenderFunctions {
                 }
                 case "felvetel gyujtemenybe" -> {
                     String cardName = parts[1];
-                    // TODO
+                    Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
+
+                    for (Card card : wordCardsList) {
+                        if (card.getName().equals(cardName)) {
+                            ArrayList<Card> playerCollection = currentPlayer.getPlayerCollection();
+                            playerCollection.add(card);
+                            currentPlayer.setPlayerCollection(playerCollection);
+                            break;
+                        }
+                    }
+
                 }
                 case "uj pakli" -> {
-                    // TODO
+                    String[] cardNames = parts[1].split(",");
+
+                    Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
+
+                    ArrayList<Card> playerDeck = currentPlayer.getPlayerDeck();
+                    for (String cardName : cardNames) {
+                        for (Card card : wordCardsList) {
+                            if (card.getName().equals(cardName)) {
+                                playerDeck.add(card);
+                                break;
+                            }
+                        }
+                    }
+                    currentPlayer.setPlayerDeck(playerDeck);
                 }
                 case "export vilag" -> {
                     // TODO

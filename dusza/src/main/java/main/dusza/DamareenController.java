@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import main.dusza.render.TxtParser;
 
 
-public class HelloController {
+public class DamareenController {
     @FXML
     private Label welcomeText;
 
