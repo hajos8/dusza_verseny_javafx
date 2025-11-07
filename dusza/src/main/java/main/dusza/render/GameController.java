@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -64,5 +65,16 @@ public class GameController implements Initializable {
         else {
             System.err.println("Fxml file not found!");
         }
+    }
+
+    public void hardDungeon() {
+    }
+
+
+    public void simpleDungeon() {
+
+    }
+
+    public void smallDungeon() {
     }
 }

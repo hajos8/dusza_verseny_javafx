@@ -10,7 +10,7 @@
    <children>
       <VBox layoutX="61.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3c6e71;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" onMouseClicked="#smallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -19,7 +19,7 @@
       </VBox>
       <VBox layoutX="441.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #284b63;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#hardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -27,7 +27,7 @@
          </children>
       </VBox>
       <VBox layoutX="251.0" layoutY="31.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #353535;">
-          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="102.0" text="Egyszerű kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+          <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#simpleDungeon" prefHeight="135.0" prefWidth="102.0" text="Egyszerű kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <font>
                   <Font size="20.0" />
               </font>
