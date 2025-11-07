@@ -8,7 +8,8 @@ public class RenderFunctions {
 
     public static ArrayList<Player> PlayersList = new ArrayList<Player>();
 
-    public static void GenerateWorld(ArrayList<String> data){
+    public static void generateWorld(String path){
+        ArrayList<String> data = TxtParser.parseTxt(path);
         for (String line : data) {
             String[] parts = line.split(";");
 
@@ -108,12 +109,5 @@ public class RenderFunctions {
             }
 
         }
-    }
-
-    public static ArrayList<Card> createWorldCards(ArrayList<String> data) {
-        ArrayList<Card> list = new ArrayList<>();
-
-        return list;
-
     }
 }

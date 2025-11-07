@@ -1,16 +1,21 @@
 package main.dusza;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import main.dusza.render.TxtParser;
+import javafx.fxml.Initializable;
+import main.dusza.render.RenderFunctions;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class DamareenController {
-    @FXML
-    private Label welcomeText;
+public class DamareenController implements Initializable {
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText(TxtParser.data.toString());
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String path = "src/main/java/main/dusza/render/in.txt";
+        RenderFunctions.generateWorld(path); //TODO refactor out of the render package
+
+
     }
 }
+

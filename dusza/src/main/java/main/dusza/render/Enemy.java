@@ -1,7 +1,7 @@
 package main.dusza.render;
 
 import java.util.ArrayList;
-
+// TODO - refactor Dungeon (nem engedi ez a szutyok, pusziiii <3)
 public class Enemy {
     public String enemyName;
     public String type;

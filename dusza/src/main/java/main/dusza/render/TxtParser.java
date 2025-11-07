@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class TxtParser {
-    public static ArrayList<String> data = parseTxt("src/main/java/main/dusza/render/in.txt");
-
     public static ArrayList<String> parseTxt(String path){
         ArrayList<String> list = new ArrayList<>();
 
@@ -25,5 +23,9 @@ public class TxtParser {
         }
 
         return list;
+    }
+
+    public static void exportVilag(ArrayList<String> data, String path){
+        //TODO
     }
 }
