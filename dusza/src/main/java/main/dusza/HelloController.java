@@ -2,6 +2,8 @@ package main.dusza;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import main.dusza.render.TxtParser;
+
 
 public class HelloController {
     @FXML
@@ -9,6 +11,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText(TxtParser.data.toString());
     }
 }
