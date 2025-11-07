@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.GameController">
+   <children>
+      <VBox layoutX="61.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3c6e71;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" onMouseClicked="#smallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="441.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #284b63;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#hardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="251.0" layoutY="31.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #353535;">
+          <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#simpleDungeon" prefHeight="135.0" prefWidth="102.0" text="Egyszerű kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+              <font>
+                  <Font size="20.0" />
+              </font>
+          </Label>
+      </VBox>
+       <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="333.0" prefHeight="58.0" prefWidth="206.0" text="Teszt">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Label>
+       <HBox id="cardsHBox" fx:id="cardsHBox" alignment="CENTER" layoutX="441.0" layoutY="328.0" prefHeight="68.0" prefWidth="154.0" />
+   </children>
+</AnchorPane>
