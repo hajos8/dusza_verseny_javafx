@@ -1,8 +1,7 @@
 package main.dusza;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import main.dusza.render.RenderFunctions;
+import main.dusza.setup.RenderFunctions;
 
 import java.net.URL;
 import java.util.ResourceBundle;

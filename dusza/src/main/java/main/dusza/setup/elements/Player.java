@@ -1,4 +1,4 @@
-package main.dusza.render;
+package main.dusza.setup.elements;
 
 import java.util.ArrayList;
 

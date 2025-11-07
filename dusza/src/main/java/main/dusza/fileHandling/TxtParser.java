@@ -1,4 +1,4 @@
-package main.dusza.render;
+package main.dusza.fileHandling;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,13 +1,16 @@
-package main.dusza.render;
+package main.dusza.setup;
+
+import main.dusza.fileHandling.TxtParser;
+import main.dusza.setup.elements.Card;
+import main.dusza.setup.elements.Dungeon;
+import main.dusza.setup.elements.LeaderCard;
+import main.dusza.setup.elements.Player;
 
 import java.util.ArrayList;
 
+import static main.dusza.main.GameData.*;
+
 public class RenderFunctions {
-    public static ArrayList<Card> wordCardsList = new ArrayList<Card>();
-    public static ArrayList<Enemy> worldEnemiesList = new ArrayList<Enemy>();
-
-    public static ArrayList<Player> PlayersList = new ArrayList<Player>();
-
     public static void generateWorld(String path){
         ArrayList<String> data = TxtParser.parseTxt(path);
         for (String line : data) {
@@ -29,36 +32,36 @@ public class RenderFunctions {
 
                     for (Card card : wordCardsList) {
                         if (card.getName().equals(oldName)) {
-                            // Upgrade to leader and it's stats
-                            card.setLeader(true, parts[3]);
-                            card.setName(newName);
+                            LeaderCard leaderCard = new LeaderCard(card.getName(), card.getDmg(), card.getHp(), card.getType(), newName);
+                            wordCardsList.add(leaderCard);
+                            break;
                         }
                     }
 
                 }
                 case "uj kazamata" -> {
-                    Enemy enemy = new Enemy();
-                    String enemyName = parts[1];
+                    Dungeon dungeon = new Dungeon();
+                    String dungeonName = parts[1];
                     String type = parts[2];
                     String prize = parts[parts.length-1];
 
-                    ArrayList<Card> enemyDeck = new ArrayList<Card>();
+                    ArrayList<Card> dungeonDeck = new ArrayList<Card>();
                     for(int i = 3; i < parts.length-2; i++){
                         String cardName = parts[i];
 
                         for (Card card : wordCardsList) {
                             if (card.getName().equals(cardName)) {
-                                enemyDeck.add(card);
+                                dungeonDeck.add(card);
                             }
                         }
                     }
 
-                    enemy.setEnemyName(enemyName);
-                    enemy.setType(type);
-                    enemy.setEnemyDeck(enemyDeck);
-                    enemy.setPrize(prize);
+                    dungeon.setDungeonName(dungeonName);
+                    dungeon.setType(type);
+                    dungeon.setPrize(prize);
+                    dungeon.setDungeonDeck(dungeonDeck);
 
-                    worldEnemiesList.add(enemy);
+                    worldEnemiesList.add(dungeon);
                 }
 
                 case "uj jatekos" -> {
@@ -79,7 +82,7 @@ public class RenderFunctions {
                         }
                     }
 
-                }
+                } //innentol vannak a csak!!! test funkciok
                 case "uj pakli" -> {
                     String[] cardNames = parts[1].split(",");
 
