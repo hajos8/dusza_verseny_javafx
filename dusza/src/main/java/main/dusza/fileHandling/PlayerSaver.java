@@ -10,7 +10,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 public class PlayerSaver {
+
+    public static boolean isRunningTest = false;
+
+
     public static void savePlayerData(String filename){
         try{
             StringBuilder fileContent = new StringBuilder();
@@ -39,9 +45,11 @@ public class PlayerSaver {
                 }
             }
 
-            FileWriter fileWriter = new FileWriter(filename);
-            fileWriter.write(fileContent.toString());
-            fileWriter.close();
+            if(!isRunningTest){
+                FileWriter fileWriter = new FileWriter(filename);
+                fileWriter.write(fileContent.toString());
+                fileWriter.close();
+            }
         }
         catch (IOException e){
             e.printStackTrace();

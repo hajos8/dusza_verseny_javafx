@@ -11,7 +11,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class WorldSaver {
+
+    public static boolean isRunningTest = false;
+
     public static void saveWorld(String filename){
+
+
+
         try{
             ArrayList<Card> cards = new ArrayList<Card>();
             ArrayList<LeaderCard> leaders = new ArrayList<LeaderCard>();
@@ -81,9 +87,11 @@ public class WorldSaver {
                 }
             }
 
-            FileWriter fileWriter = new FileWriter(new File(filename));
-            fileWriter.write(fileContent.toString());
-            fileWriter.close();
+            if(!isRunningTest) {
+                FileWriter fileWriter = new FileWriter(new File(filename));
+                fileWriter.write(fileContent.toString());
+                fileWriter.close();
+            }
         }
         catch (IOException e){
             e.printStackTrace();

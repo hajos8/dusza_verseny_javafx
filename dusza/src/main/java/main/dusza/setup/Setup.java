@@ -16,8 +16,14 @@ import java.util.ArrayList;
 import static main.dusza.main.GameData.*;
 
 public class Setup {
+
+    public static boolean isRunningTest = false;
+    public static ArrayList<String> testData;
     public static void generateWorld(String path){
-        ArrayList<String> data = TxtParser.parseTxt(path);
+
+
+
+        ArrayList<String> data = isRunningTest? testData : TxtParser.parseTxt(path);
         for (String line : data) {
             String[] parts = line.split(";");
 
