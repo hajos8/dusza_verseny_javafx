@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="container" fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.StartDamareenController">
+   <children>
+      <MFXButton id="startButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="253.0" onAction="#handleStartButton" text="Indítás" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXButton>
+      <Label id="titleLabel" fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="84.0" prefHeight="115.0" prefWidth="233.0" text="Damareen" textAlignment="CENTER">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.31060607482989633" startY="0.26515151515151514">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+         <font>
+            <Font name="Chiller" size="80.0" />
+         </font>
+      </Label>
+      <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="115.0" prefWidth="442.0" text="Add meg a játékosnevedet:" textAlignment="CENTER" textFill="RED" visible="false">
+         <font>
+            <Font name="Candara" size="36.0" />
+         </font>
+      </Label>
+      <MFXTextField id="usernameTextField" fx:id="usernameTextField" layoutX="150.0" layoutY="179.0" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="Játékosnév" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </MFXTextField>
+      <MFXButton id="playButton" fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="253.0" onAction="#handlePlayButton" text="Játék" textAlignment="CENTER" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MFXButton>
+   </children>
+</AnchorPane>
