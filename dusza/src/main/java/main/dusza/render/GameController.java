@@ -4,6 +4,7 @@ import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,8 +33,21 @@ public class GameController implements Initializable {
     public static ArrayList<Card> playerDeck = new ArrayList<>();
     ArrayList<Card> playerCollection = currentPlayer.getCollection();
 
+    int collectionHalfSize = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        collectionHBox.setAlignment(Pos.CENTER);
+        deckHBox.setAlignment(Pos.CENTER);
+        collectionHBox.setSpacing(12);
+        deckHBox.setSpacing(12);
+
+        if (playerCollection.size() % 2 != 0) {
+            collectionHalfSize = (int) Math.ceil( (double) playerCollection.size() / 2 );
+        } else {
+            collectionHalfSize = playerCollection.size() / 2;
+        }
+
         renderAll();
     }
 
@@ -88,7 +102,7 @@ public class GameController implements Initializable {
         boolean stateChanged = false;
 
         if (inCollection != null && inDeck == null) {
-            if (playerDeck.size() < 2) {
+            if (playerDeck.size() < collectionHalfSize) {
                 playerDeck.add(inCollection);
                 playerCollection.remove(inCollection);
                 stateChanged = true;
@@ -120,7 +134,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void handleNextButton() throws IOException {
-        if (playerDeck.size() == 2) {
+        if (playerDeck.size() == collectionHalfSize) {
             URL fxml = getClass().getResource("/main/dusza/dungeons-view.fxml");
             if (fxml != null) {
                 Parent root = FXMLLoader.load(fxml);
