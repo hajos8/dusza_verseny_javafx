@@ -27,7 +27,7 @@ public class GameController implements Initializable {
     @FXML public HBox collectionHBox;
     @FXML public HBox deckHBox;
     @FXML public MFXButton nextButton;
-    @FXML public Label usernameLabel;
+    @FXML public Label task;
 
     public static Player currentPlayer = GameData.PlayersList.getFirst();
     public static ArrayList<Card> playerDeck = new ArrayList<>();
@@ -48,6 +48,7 @@ public class GameController implements Initializable {
             collectionHalfSize = playerCollection.size() / 2;
         }
 
+        task.setText("Válassz ki " + collectionHalfSize + " darab kártyát!");
         renderAll();
     }
 
