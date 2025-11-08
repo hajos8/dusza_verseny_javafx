@@ -20,6 +20,6 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <HBox id="deckHBox" fx:id="deckHBox" layoutX="22.0" layoutY="200.0" prefHeight="100.0" prefWidth="550.0" />
+      <HBox id="deckHBox" fx:id="deckHBox" layoutX="152.0" layoutY="200.0" prefHeight="100.0" prefWidth="300.0" />
    </children>
 </AnchorPane>
