@@ -141,6 +141,7 @@ public class GameController implements Initializable {
                 Parent root = FXMLLoader.load(fxml);
                 Scene scene = nextButton.getScene();
                 scene.setRoot(root);
+                GameData.PlayersList.getFirst().setDeck(playerDeck);
             }
             else {
                 throw new FileNotFoundException("FXML not found: /main/dusza/dungeons-view.fxml");

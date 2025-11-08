@@ -1,9 +1,12 @@
 package main.dusza.main;
 
+import javafx.application.Platform;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
+import main.dusza.render.DungeonBattle;
 
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 import static main.dusza.main.BattleAI.*;
 
@@ -18,7 +21,8 @@ public class BattleRoundManager {
 
     public static StringBuilder logBuilder = new StringBuilder();
 
-    public static void battle(String dungeonName){
+    public static void battle(String dungeonName, DungeonBattle ui){
+
         logBuilder
                 .append("harc kezdodik")
                 .append(";")
@@ -32,7 +36,6 @@ public class BattleRoundManager {
         int roundCounter = 1;
 
         do{
-            //TODO implement double attack after defeating one card if there are more cards on the table
             logBuilder
                     .append(roundCounter)
                     .append(".kor")
@@ -41,6 +44,10 @@ public class BattleRoundManager {
                     .append(";");
 
             generateTurn("kazamata");
+
+            if (!testMode) {
+                Platform.runLater(() -> ui.updateTable("kazamata"));
+            }
 
             logBuilder
                     .append(roundCounter)
@@ -51,7 +58,13 @@ public class BattleRoundManager {
 
             if(testMode) generateTurn("player");
             else{
-                //TODO implement player turn
+                Card chosen = ui.awaitPlayerChoiceFromHand(playerHand); // LENT mutatom
+                if (chosen != null) {
+                    lastPlayedPlayerCard = chosen;
+                    playerHand.remove(chosen);
+                    playerTable.add(chosen);
+                    Platform.runLater(() -> ui.updateTable("jatekos"));
+                }
             }
             logBuilder.append("\n");
             roundCounter++;

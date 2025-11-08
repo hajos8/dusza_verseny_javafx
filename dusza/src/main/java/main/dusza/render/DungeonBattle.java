@@ -1,8 +1,10 @@
 package main.dusza.render;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -15,23 +17,34 @@ import main.dusza.main.GameData;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.CompletableFuture;
 
 public class DungeonBattle implements Initializable {
-    @FXML HBox dungeonDeckHBox, playerDeckHBox;
+    @FXML HBox enemyTable;
+    @FXML HBox playerTable;
+    @FXML HBox playerDeckHBox;
+    @FXML HBox dungeonDeckHBox;
     @FXML Label dungeonName;
     @FXML Label usernameLabel;
 
     public boolean isDungeon = false;
+    private volatile CompletableFuture<Card> waitingChoice;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        GameController gameController = new GameController();
         String dungeonnNameString = "";
 
         dungeonDeckHBox.setAlignment(Pos.CENTER);
+        dungeonDeckHBox.setSpacing(12);
+
         playerDeckHBox.setAlignment(Pos.CENTER);
-        dungeonDeckHBox.setSpacing(12);
-        dungeonDeckHBox.setSpacing(12);
+        playerDeckHBox.setSpacing(12);
+
+        enemyTable.setAlignment(Pos.CENTER);
+        enemyTable.setSpacing(12);
+
+        playerTable.setAlignment(Pos.CENTER);
+        playerTable.setSpacing(12);
 
         usernameLabel.setText(GameData.PlayersList.getFirst().getName());
 
@@ -48,6 +61,8 @@ public class DungeonBattle implements Initializable {
         deckGenerator(playerDeckHBox, GameController.playerDeck);
 
         // BattleRoundManager.battle(dungeonnNameString);
+        String finalDungeonnNameString = dungeonnNameString;
+        new Thread(() -> BattleRoundManager.battle(finalDungeonnNameString, this), "Battle-Thread").start();
     }
 
     public void deckGenerator(HBox deckHBox, ArrayList<Card> deck) {
@@ -76,7 +91,44 @@ public class DungeonBattle implements Initializable {
         return box;
     }
 
-    private void handleCardClick(MouseEvent mouseEvent) {
-        System.out.println("handleClick");
+    public void updateTable (String name) {
+
+        switch (name) {
+            case "jatekos" -> {
+                deckGenerator(playerDeckHBox, BattleRoundManager.playerHand);
+                deckGenerator(playerTable, BattleRoundManager.playerTable);
+            }
+            case "kazamata" -> {
+                deckGenerator(dungeonDeckHBox, BattleRoundManager.enemyHand);
+                deckGenerator(enemyTable, BattleRoundManager.enemyTable);
+            }
+        }
+    }
+
+    public Card awaitPlayerChoiceFromHand(ArrayList<Card> playerHand) {
+        Platform.runLater(() -> {
+            deckGenerator(playerDeckHBox, playerHand);
+        });
+
+        waitingChoice = new CompletableFuture<>();
+        return waitingChoice.join();
+    }
+
+    private void handleCardClick(MouseEvent e) {
+        Node src = (Node) e.getSource();
+        String id = src.getId();
+
+        Card clicked = null;
+        for (Card card : BattleRoundManager.playerHand) {
+            if (card.getName().equals(id)) {
+                clicked = card;
+            }
+        }
+        if (clicked == null) return;
+
+        if (waitingChoice != null && !waitingChoice.isDone()) {
+            waitingChoice.complete(clicked);
+            waitingChoice = null;
+        }
     }
 }

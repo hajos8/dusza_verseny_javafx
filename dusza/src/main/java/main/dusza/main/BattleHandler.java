@@ -3,6 +3,7 @@ package main.dusza.main;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class BattleHandler {
@@ -137,8 +138,19 @@ public class BattleHandler {
 
     //setting up the decks
     public static void fillUpBattleHands(String dungeonName){
+
+        var player = GameData.PlayersList.getFirst();
+        var safeDeck  = (player.getDeck() != null) ? player.getDeck() : new ArrayList<Card>();
+
+        var p = GameData.PlayersList.getFirst();
+        var deck = p.getDeck();
+        if (deck == null) {
+            deck = new ArrayList<>();
+            p.setDeck(deck);
+        }
+
         // deep-copy deck
-        for(Card card : GameData.PlayersList.getFirst().getDeck()){
+        for(Card card : safeDeck){
             BattleRoundManager.playerHand
                     .add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
         }
