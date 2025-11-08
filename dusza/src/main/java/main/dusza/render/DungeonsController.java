@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -27,6 +28,8 @@ public class DungeonsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         usernameLabel.setText(GameController.currentPlayer.getName());
+        deckHBox.setAlignment(Pos.CENTER);
+        deckHBox.setSpacing(12);
         renderAll();
     }
 

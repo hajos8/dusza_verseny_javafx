@@ -5,11 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.DungeonsController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.DungeonsController">
    <children>
-      <VBox layoutX="61.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3c6e71;">
+      <VBox layoutX="150.0" layoutY="270.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3c6e71;">
          <children>
             <Label id="smallDungeonLabel" fx:id="smallDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSmallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
@@ -18,7 +21,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="441.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #284b63;">
+      <VBox layoutX="829.0" layoutY="258.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #284b63;">
          <children>
             <Label id="hardDungeonLabel" fx:id="hardDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleHardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
@@ -27,20 +30,58 @@
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="251.0" layoutY="31.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #353535;">
+      <VBox layoutX="491.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #353535;">
           <Label id="simpleDungeonLabel" fx:id="simpleDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSimpleDungeon" prefHeight="135.0" prefWidth="102.0" text="Egyszerű kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <font>
                   <Font size="20.0" />
               </font>
           </Label>
       </VBox>
-       <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="198.0" layoutY="333.0" prefHeight="58.0" prefWidth="206.0">
+       <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="635.0" prefHeight="58.0" prefWidth="206.0" textAlignment="CENTER">
            <font>
                <Font size="20.0" />
            </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
        </Label>
-       <HBox id="deckHBox" fx:id="deckHBox" alignment="CENTER" layoutY="333.0" prefHeight="68.0" prefWidth="154.0" />
-      <Label layoutX="61.0" layoutY="319.0" text="Pakli" />
-      <MFXButton layoutX="424.0" layoutY="324.0" text="Új pakli összeállítása" onAction="#handleNewDeck" />
+       <HBox id="deckHBox" fx:id="deckHBox" alignment="CENTER" layoutX="14.0" layoutY="631.0" prefHeight="68.0" prefWidth="467.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="589.0" prefHeight="26.0" prefWidth="194.0" text="Összeállított pakli" textAlignment="CENTER">
+         <font>
+            <Font name="Chiller" size="32.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <MFXButton layoutX="844.0" layoutY="649.0" onAction="#handleNewDeck" text="Új pakli összeállítása" textFill="RED">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></MFXButton>
    </children>
 </AnchorPane>
