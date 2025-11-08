@@ -39,7 +39,7 @@ public class GameController implements Initializable {
 
     private void renderAll() {
         collectionGenerator();
-        deckGenerator();
+        deckGenerator(deckHBox, playerDeck);
     }
 
     private void collectionGenerator() {
@@ -52,10 +52,10 @@ public class GameController implements Initializable {
         }
     }
 
-    private void deckGenerator() {
+    public void deckGenerator(HBox deckHBox, ArrayList<Card> deck) {
         deckHBox.getChildren().clear();
 
-        for (Card card : playerDeck) {
+        for (Card card : deck) {
             atlantafx.base.controls.Card uiCard = buildUiCard(card);
             VBox wrapper = wrapCard(uiCard, card.getName());
             deckHBox.getChildren().add(wrapper);

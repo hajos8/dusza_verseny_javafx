@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DungeonsController implements Initializable {
+    public static String chosenDungeonType = "";
+
     @FXML public Label usernameLabel;
     @FXML public HBox deckHBox;
     @FXML public Label smallDungeonLabel;
@@ -58,40 +60,32 @@ public class DungeonsController implements Initializable {
 
     @FXML
     public void handleSmallDungeon () throws IOException {
-        URL fxml = getClass().getResource("/main/dusza/smallDungeon-view.fxml");
-        if (fxml != null) {
-            Parent root = FXMLLoader.load(fxml);
-            Scene scene = smallDungeonLabel.getScene();
-            scene.setRoot(root);
-        }
-        else {
-            throw new FileNotFoundException("FXML not found: /main/dusza/smallDungeon-view.fxml");
-        }
+        chosenDungeonType = "kis";
+        handleStartDungeon();
     }
 
     @FXML
     public void handleHardDungeon() throws IOException {
-        URL fxml = getClass().getResource("/main/dusza/bigDungeon-view.fxml");
-        if (fxml != null) {
-            Parent root = FXMLLoader.load(fxml);
-            Scene scene = hardDungeonLabel.getScene();
-            scene.setRoot(root);
-        }
-        else {
-            throw new FileNotFoundException("FXML not found: /main/dusza/bigDungeon-view.fxml");
-        }
+        chosenDungeonType = "nagy";
+        handleStartDungeon();
     }
 
     @FXML
     public void handleSimpleDungeon() throws IOException {
-        URL fxml = getClass().getResource("/main/dusza/simpleDungeon-view.fxml");
+        chosenDungeonType = "egyszeru";
+        handleStartDungeon();
+    }
+
+    @FXML
+    public void handleStartDungeon() throws IOException {
+        URL fxml = getClass().getResource("/main/dusza/dungeonBattle-view.fxml");
         if (fxml != null) {
             Parent root = FXMLLoader.load(fxml);
-            Scene scene = simpleDungeonLabel.getScene();
+            Scene scene = usernameLabel.getScene();
             scene.setRoot(root);
         }
         else {
-            throw new FileNotFoundException("FXML not found: /main/dusza/simpleDungeon-view.fxml");
+            throw new FileNotFoundException("/main/dusza/dungeonBattle-view.fxml");
         }
     }
 }
