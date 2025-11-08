@@ -3,9 +3,7 @@ package main.dusza.main;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
 
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class BattleHandler {
     public static void playCard(String name, Card card) {
@@ -114,7 +112,7 @@ public class BattleHandler {
         BattleRoundManager.logBuilder
                 .append(defender.getName())
                 .append(";")
-                .append(Math.max(defender.getHp(), 0))
+                .append(defender.getHp()) //0 helyett a rendes hp erteke
                 .append("\n");
 
         if(defender.getHp() <= 0){
