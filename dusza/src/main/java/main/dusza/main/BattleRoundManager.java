@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import static main.dusza.main.BattleAI.*;
 
 public class BattleRoundManager {
-    public static boolean testMode = true;
+    public static boolean testMode = false;
 
     public static ArrayList<Card> playerHand = new ArrayList<Card>();
     public static ArrayList<Card> enemyHand = new ArrayList<Card>();
@@ -102,8 +102,8 @@ public class BattleRoundManager {
                         case "kartya" -> {
                             if(testMode){
                                 for(Card card : GameData.worldCardsList){
-                                    if(!GameData.PlayersList.getFirst().getDeck().contains(card)) {
-                                        GameData.PlayersList.getFirst().getDeck().add(card);
+                                    if(!GameData.PlayersList.getFirst().getCollection().contains(card)) {
+                                        GameData.PlayersList.getFirst().getCollection().add(card);
                                         break;
                                     }
                                 }
