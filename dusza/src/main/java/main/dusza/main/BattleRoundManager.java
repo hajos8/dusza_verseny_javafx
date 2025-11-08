@@ -58,7 +58,7 @@ public class BattleRoundManager {
 
             if(testMode) generateTurn("player");
             else{
-                Card chosen = ui.awaitPlayerChoiceFromHand(playerHand); // LENT mutatom
+                Card chosen = ui.awaitPlayerChoiceFromHand(playerHand);
                 if (chosen != null) {
                     lastPlayedPlayerCard = chosen;
                     playerHand.remove(chosen);
@@ -122,7 +122,13 @@ public class BattleRoundManager {
                                 }
                             }
                             else{
-                                //TODO player chooses a card
+                                Card chosen = ui.awaitPlayerChoiceFromHand(playerHand);
+                                if (chosen != null) {
+                                    lastPlayedPlayerCard = chosen;
+                                    playerHand.remove(chosen);
+                                    playerTable.add(chosen);
+                                    Platform.runLater(() -> ui.updateTable("jatekos"));
+                                }
                             }
 
                         }
