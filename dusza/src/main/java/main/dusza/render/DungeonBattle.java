@@ -2,6 +2,7 @@ package main.dusza.render;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -18,6 +19,7 @@ import java.util.ResourceBundle;
 public class DungeonBattle implements Initializable {
     @FXML HBox dungeonDeckHBox, playerDeckHBox;
     @FXML Label dungeonName;
+    @FXML Label usernameLabel;
 
     public boolean isDungeon = false;
 
@@ -25,6 +27,13 @@ public class DungeonBattle implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         GameController gameController = new GameController();
         String dungeonnNameString = "";
+
+        dungeonDeckHBox.setAlignment(Pos.CENTER);
+        playerDeckHBox.setAlignment(Pos.CENTER);
+        dungeonDeckHBox.setSpacing(12);
+        dungeonDeckHBox.setSpacing(12);
+
+        usernameLabel.setText(GameData.PlayersList.getFirst().getName());
 
         isDungeon = true;
         for(Dungeon dungeon : GameData.worldDungeonList) {
