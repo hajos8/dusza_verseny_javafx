@@ -1,5 +1,6 @@
 package main.dusza.render;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -85,6 +86,18 @@ public class DungeonsController implements Initializable {
     @FXML
     public void handleSimpleDungeon() throws IOException {
         URL fxml = getClass().getResource("/main/dusza/simpleDungeon-view.fxml");
+        if (fxml != null) {
+            Parent root = FXMLLoader.load(fxml);
+            Scene scene = simpleDungeonLabel.getScene();
+            scene.setRoot(root);
+        }
+        else {
+            throw new FileNotFoundException("FXML not found: /main/dusza/simpleDungeon-view.fxml");
+        }
+    }
+
+    public void handleNewDeck() throws IOException {
+        URL fxml = getClass().getResource("/main/dusza/collection-view.fxml");
         if (fxml != null) {
             Parent root = FXMLLoader.load(fxml);
             Scene scene = simpleDungeonLabel.getScene();
