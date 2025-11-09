@@ -4,20 +4,27 @@
     -fx-border-radius: 10px;
     -fx-pref-width: 100px;
     -fx-pref-height: 100px;
+    -fx-min-height: 100px;
+    -fx-min-width: 100px;
 }
 
-#startContainer, #dungeonpaint {
+#startContainer, #collectionContainer, #dungeonpaint {
     -fx-background-color: linear-gradient(to bottom, red, black);
     -fx-font-family: "Chiller";
 
 }
 
-#titleLabel, #usernameLabel {
+#collectionPane, #collectionScroll {
+    -fx-background-color: linear-gradient(to bottom, red, black);
+    -fx-font-family: "Chiller";
+}
+
+#titleLabel, #usernameLabel, #task {
     -fx-text-fill: linear-gradient(to left, yellow, orange);
     -fx-font-size: 60px;
 }
 
-#startButton, #playButton {
+#startButton, #playButton, #nextButton {
     -fx-background-radius: 300;
     -fx-font-family: "Chiller";
     -fx-text-fill: linear-gradient(to left, yellow, orange);
@@ -25,6 +32,13 @@
     -fx-font-size: 40;
     -fx-pref-width: 200px;
     -fx-padding: 10;
+}
+
+#startButton:hover, #playButton:hover, #nextButton:hover {
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: gray;
+    -fx-border-radius: 300;
 }
 
 #usernameTextField {
@@ -38,6 +52,10 @@
     -fx-padding: 10;
     -fx-border-radius: 300;
     -fx-prompt-text-fill: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: gray;
+    -fx-text-alignment: center;
 }
 
 #smallDungeon, #hardDungeon, #simpleDungeon{
