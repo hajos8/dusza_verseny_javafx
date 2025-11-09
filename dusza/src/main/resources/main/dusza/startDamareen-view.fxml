@@ -55,7 +55,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <MFXTextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="390.0" layoutY="360.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" promptText="Játékosnév" visible="false">
+      <MFXTextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="390.0" layoutY="360.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" promptText="Játékosnév" textLimit="20" visible="false">
          <font>
             <Font size="15.0" />
          </font>

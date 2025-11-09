@@ -26,6 +26,13 @@
     -fx-padding: 10;
 }
 
+#startButton:hover, #playButton:hover {
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: gray;
+    -fx-border-radius: 300;
+}
+
 #usernameTextField {
     -fx-background-radius: 300;
     -fx-font-family: "Chiller";
@@ -37,4 +44,8 @@
     -fx-padding: 10;
     -fx-border-radius: 300;
     -fx-prompt-text-fill: white;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-color: gray;
+    -fx-text-alignment: center;
 }
