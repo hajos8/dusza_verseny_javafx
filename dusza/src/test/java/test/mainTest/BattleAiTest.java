@@ -22,8 +22,8 @@ public class BattleAiTest {
     @BeforeEach
     public void beforeTest(){
         BattleRoundManager.testMode = true;
-        BattleAI.isRunningTest = false;
-        BattleAI.rand = new Random(0);
+        //BattleAI.isRunningTest = false;
+        //BattleAI.rand = new Random(0);
         BattleHandlerStub.lastAction = null;
 
         BattleRoundManager.playerTable = new ArrayList<>();
