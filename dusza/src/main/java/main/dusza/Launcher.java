@@ -1,6 +1,6 @@
 package main.dusza;
 
-import jasvafx.application.Application;
+import javafx.application.Application;
 import main.dusza.main.BattleRoundManager;
 import main.dusza.setup.Setup;
 
