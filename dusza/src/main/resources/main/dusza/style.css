@@ -5,3 +5,47 @@
     -fx-pref-width: 100px;
     -fx-pref-height: 100px;
 }
+
+#startContainer, #dungeonpaint {
+    -fx-background-color: linear-gradient(to bottom, red, black);
+    -fx-font-family: "Chiller";
+
+}
+
+#titleLabel, #usernameLabel {
+    -fx-text-fill: linear-gradient(to left, yellow, orange);
+    -fx-font-size: 60px;
+}
+
+#startButton, #playButton {
+    -fx-background-radius: 300;
+    -fx-font-family: "Chiller";
+    -fx-text-fill: linear-gradient(to left, yellow, orange);
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-font-size: 40;
+    -fx-pref-width: 200px;
+    -fx-padding: 10;
+}
+
+#usernameTextField {
+    -fx-background-radius: 300;
+    -fx-font-family: "Chiller";
+    -fx-font-size: 40;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 100px;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-border-radius: 300;
+    -fx-prompt-text-fill: white;
+}
+
+#smallDungeon, #hardDungeon, #simpleDungeon{
+    -fx-border-color:black;
+    -fx-border-radius:5px;
+    -fx-border-size:2px;
+    -fx-padding:5;
+    -fx-border-style:solid;
+    -fx-background-radius:5;
+}
+

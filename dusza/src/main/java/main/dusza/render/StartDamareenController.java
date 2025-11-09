@@ -16,7 +16,7 @@ import java.net.URL;
 
 public class StartDamareenController {
 
-    @FXML public AnchorPane container;
+    @FXML public AnchorPane startContainer;
     @FXML public MFXButton startButton;
     @FXML public Label titleLabel;
     @FXML public Label usernameLabel;

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class BattleHandler {
-
     public static void playCard(String name, Card card) {
         switch (name){
             case "jatekos" ->{
@@ -118,13 +117,16 @@ public class BattleHandler {
         if(defender.getHp() <= 0){
             BattleRoundManager.logBuilder.append("0").append("\n");
 
-            if(attackingPlayer.equals("kazamata")){
-                BattleRoundManager.playerTable.remove(defender);
-                if(!BattleRoundManager.playerTable.isEmpty()){
-                    // masodik tamadas, ha van meg ellenfel a tablan
-                    BattleAI.generateTurn("kazamata");
-                }
+            switch(attackingPlayer){
+                case "jatekos" -> BattleRoundManager.enemyTable.remove(defender);
+                case "kazamata" -> {
+                    BattleRoundManager.playerTable.remove(defender);
 
+                    if(!BattleRoundManager.playerTable.isEmpty()){
+                        // masodik tamadas, ha van meg ellenfel a tablan
+                        BattleAI.generateTurn("kazamata");
+                    }
+                }
             }
         }
         else{

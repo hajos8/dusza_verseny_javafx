@@ -10,30 +10,30 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.DungeonsController">
+<AnchorPane id="dungeonpaint" prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.DungeonsController">
    <children>
-      <VBox layoutX="150.0" layoutY="270.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3c6e71;">
+      <VBox fx:id="smallDungeon" layoutX="160.0" layoutY="285.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #7c0000;">
          <children>
             <Label id="smallDungeonLabel" fx:id="smallDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSmallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Chiller" size="20.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="829.0" layoutY="258.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #284b63;">
+      <VBox fx:id="hardDungeon" layoutX="490.0" layoutY="60.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3e0000;">
          <children>
             <Label id="hardDungeonLabel" fx:id="hardDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleHardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Chiller" size="20.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox layoutX="491.0" layoutY="97.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #353535;">
+      <VBox fx:id="simpleDungeon" layoutX="844.0" layoutY="285.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #f80000;">
           <Label id="simpleDungeonLabel" fx:id="simpleDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSimpleDungeon" prefHeight="135.0" prefWidth="102.0" text="Egyszerű kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
               <font>
-                  <Font size="20.0" />
+                  <Font name="Chiller" size="20.0" />
               </font>
           </Label>
       </VBox>
@@ -59,12 +59,12 @@
          </textFill>
        </Label>
        <HBox id="deckHBox" fx:id="deckHBox" alignment="CENTER" layoutX="14.0" layoutY="631.0" prefHeight="68.0" prefWidth="467.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="589.0" prefHeight="26.0" prefWidth="194.0" text="Összeállított pakli" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="583.0" prefHeight="47.0" prefWidth="290.0" text="Összeállított pakli" textAlignment="CENTER">
          <font>
             <Font name="Chiller" size="32.0" />
          </font>
          <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
+            <LinearGradient startX="0.10606060199665301" startY="1.0">
                <stops>
                   <Stop>
                      <color>
@@ -73,13 +73,13 @@
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color />
+                        <Color red="1.0" />
                      </color>
                   </Stop>
                </stops>
             </LinearGradient>
          </textFill></Label>
-      <MFXButton layoutX="844.0" layoutY="649.0" onAction="#handleNewDeck" text="Új pakli összeállítása" textFill="RED">
+      <MFXButton buttonType="RAISED" layoutX="844.0" layoutY="649.0" onAction="#handleNewDeck" text="Új pakli összeállítása" textFill="RED">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></MFXButton>
