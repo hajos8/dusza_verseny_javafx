@@ -94,7 +94,7 @@ public class WorldSaver {
                     }
                 }
 
-                fileContent.append(";");
+                if(!leaderCards.isEmpty())fileContent.append(";");
 
                 for(int i = 0; i < leaderCards.size(); i++){
                     if(i + 1 == leaderCards.size()){
