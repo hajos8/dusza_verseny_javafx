@@ -55,6 +55,18 @@ public class GameController implements Initializable {
         for(Card card : currentPlayer.getCollection()){
             playerCollection.add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
         }
+
+        // put buffed cards into collection
+        for(Card deckCard : currentPlayer.getDeck()){
+            for(Card collectionCard : playerCollection){
+                if(deckCard.getName().equals(collectionCard.getName())){
+                    playerCollection.remove(collectionCard);
+                    playerCollection.add(new Card(deckCard.getName(), deckCard.getDmg(), deckCard.getHp(), deckCard.getType()));
+                    break;
+                }
+            }
+        }
+
         GameData.PlayersList.getFirst().setDeck(new ArrayList<>());
         playerDeck.clear();
 
@@ -168,13 +180,5 @@ public class GameController implements Initializable {
                 throw new FileNotFoundException("FXML not found: /main/dusza/dungeons-view.fxml");
             }
         }
-    }
-
-    public void hardDungeon() { /* TODO */ }
-
-    public void simpleDungeon() { /* TODO */ }
-
-    public void smallDungeon() {
-        /* TODO */
     }
 }
