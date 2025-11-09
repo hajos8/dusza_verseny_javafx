@@ -70,10 +70,42 @@ public class WorldSaver {
                         .append(dungeon.getName())
                         .append(";");
 
+                ArrayList<LeaderCard> leaderCards = new ArrayList<>();
+                ArrayList<Card> NormalCards = new ArrayList<>();
+
                 for(Card card : dungeon.getDungeonDeck()){
-                    fileContent
-                            .append(card.getName())
-                            .append(";");
+                    if(card instanceof LeaderCard){
+                        leaderCards.add((LeaderCard) card);
+                    }
+                    else{
+                        NormalCards.add(card);
+                    }
+                }
+
+                for(int i = 0; i < NormalCards.size(); i++){
+                    if(i + 1 == NormalCards.size()){
+                        fileContent
+                                .append(NormalCards.get(i).getName());
+                    }
+                    else{
+                        fileContent
+                                .append(NormalCards.get(i).getName())
+                                .append(",");
+                    }
+                }
+
+                fileContent.append(";");
+
+                for(int i = 0; i < leaderCards.size(); i++){
+                    if(i + 1 == leaderCards.size()){
+                        fileContent
+                                .append(leaderCards.get(i).getName());
+                    }
+                    else{
+                        fileContent
+                                .append(leaderCards.get(i).getName())
+                                .append(",");
+                    }
                 }
 
                 if(dungeon.getType().equals("nagy")){
@@ -82,6 +114,7 @@ public class WorldSaver {
                 }
                 else{
                     fileContent
+                            .append(";")
                             .append(dungeon.getPrize())
                             .append("\n");
                 }
