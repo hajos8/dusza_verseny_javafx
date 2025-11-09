@@ -90,6 +90,7 @@ public class BattleRoundManager {
                             .append(chosen.getType());
 
                     Platform.runLater(() -> ui.updateTable("jatekos"));
+                    System.out.println("Működj!");
                 }
             }
             logBuilder.append("\n");

@@ -203,6 +203,8 @@ public class DungeonBattle implements Initializable {
             }
 
             BattleHandler.attack("jatekos", selectedAttacker, selectedDefender);
+            updateTable("kazamata");
+            System.out.println("handleAttackEnemyClick");
         }
     }
 }
