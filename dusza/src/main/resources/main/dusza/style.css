@@ -6,17 +6,17 @@
     -fx-pref-height: 100px;
 }
 
-#startContainer {
+#startContainer, #collectionContainer {
     -fx-background-color: linear-gradient(to bottom, red, black);
     -fx-font-family: "Chiller";
 }
 
-#titleLabel, #usernameLabel {
+#titleLabel, #usernameLabel, #task {
     -fx-text-fill: linear-gradient(to left, yellow, orange);
     -fx-font-size: 60px;
 }
 
-#startButton, #playButton {
+#startButton, #playButton, #nextButton {
     -fx-background-radius: 300;
     -fx-font-family: "Chiller";
     -fx-text-fill: linear-gradient(to left, yellow, orange);
@@ -26,7 +26,7 @@
     -fx-padding: 10;
 }
 
-#startButton:hover, #playButton:hover {
+#startButton:hover, #playButton:hover, #nextButton:hover {
     -fx-border-width: 2px;
     -fx-border-style: solid;
     -fx-border-color: gray;

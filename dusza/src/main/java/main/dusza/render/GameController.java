@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.dusza.ShowDatas;
@@ -30,6 +31,7 @@ public class GameController implements Initializable {
     @FXML public HBox deckHBox;
     @FXML public MFXButton nextButton;
     @FXML public Label task;
+    @FXML public AnchorPane collectionContainer;
 
     public static Player currentPlayer = GameData.PlayersList.getFirst();
     public static ArrayList<Card> playerDeck = new ArrayList<>();
