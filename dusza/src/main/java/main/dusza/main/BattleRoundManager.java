@@ -50,15 +50,28 @@ public class BattleRoundManager {
                 Platform.runLater(() -> ui.updateTable("kazamata"));
             }
 
-            logBuilder
-                    .append(roundCounter)
-                    .append(".kor")
-                    .append(";")
-                    .append("jatekos")
-                    .append(";");
 
-            if(testMode) generateTurn("player");
+            if(testMode) {
+                if(playerHand.isEmpty() && playerTable.isEmpty()){
+                    break;
+                }
+                logBuilder
+                        .append(roundCounter)
+                        .append(".kor")
+                        .append(";")
+                        .append("jatekos")
+                        .append(";");
+
+                generateTurn("player");
+            }
             else{
+                logBuilder
+                        .append(roundCounter)
+                        .append(".kor")
+                        .append(";")
+                        .append("jatekos")
+                        .append(";");
+
                 Card chosen = ui.awaitPlayerChoiceFromHand(playerHand);
                 if (chosen != null) {
                     lastPlayedPlayerCard = chosen;
@@ -69,6 +82,8 @@ public class BattleRoundManager {
             }
             logBuilder.append("\n");
             roundCounter++;
+
+            System.out.println(logBuilder.toString());
         }
         while(
                 !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
