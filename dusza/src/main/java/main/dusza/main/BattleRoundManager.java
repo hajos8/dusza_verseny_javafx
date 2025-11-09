@@ -47,7 +47,9 @@ public class BattleRoundManager {
             generateTurn("kazamata");
 
             if (!testMode) {
-                Platform.runLater(() -> ui.updateTable("kazamata"));
+                Platform.runLater(() -> {
+                    ui.updateTable("kazamata");
+                });
             }
 
             if(testMode) {
@@ -76,6 +78,17 @@ public class BattleRoundManager {
                     lastPlayedPlayerCard = chosen;
                     playerHand.remove(chosen);
                     playerTable.add(chosen);
+
+                    logBuilder
+                            .append("kijatszik;")
+                            .append(chosen.getName())
+                            .append(";")
+                            .append(chosen.getDmg())
+                            .append(";")
+                            .append(chosen.getHp())
+                            .append(";")
+                            .append(chosen.getType());
+
                     Platform.runLater(() -> ui.updateTable("jatekos"));
                 }
             }

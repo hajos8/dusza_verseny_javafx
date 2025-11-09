@@ -13,7 +13,7 @@
    <children>
       <HBox id="collectionHBox" fx:id="collectionHBox" alignment="CENTER" layoutX="79.0" layoutY="153.0" prefHeight="206.0" prefWidth="922.0" />
       <MFXButton id="nextButton" fx:id="nextButton" layoutX="510.0" layoutY="587.0" onAction="#handleNextButton" text="Tovább" />
-      <Label id="task" fx:id="task" alignment="CENTER" layoutX="243.0" layoutY="114.0" prefHeight="38.0" prefWidth="590.0" textAlignment="CENTER">
+      <Label id="task" fx:id="task" alignment="CENTER" layoutX="245.0" layoutY="91.0" prefHeight="38.0" prefWidth="590.0" textAlignment="CENTER">
          <font>
             <Font size="26.0" />
          </font>
