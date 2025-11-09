@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -32,9 +33,12 @@ public class GameController implements Initializable {
     @FXML public MFXButton nextButton;
     @FXML public Label task;
     @FXML public AnchorPane collectionContainer;
+    @FXML public ScrollPane collectionScroll;
+    @FXML public AnchorPane collectionPane;
 
     public static Player currentPlayer = GameData.PlayersList.getFirst();
     public static ArrayList<Card> playerDeck = new ArrayList<>();
+
     ArrayList<Card> playerCollection = new ArrayList<>();
 
     int collectionHalfSize = 0;

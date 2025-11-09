@@ -4,9 +4,16 @@
     -fx-border-radius: 10px;
     -fx-pref-width: 100px;
     -fx-pref-height: 100px;
+    -fx-min-height: 100px;
+    -fx-min-width: 100px;
 }
 
 #startContainer, #collectionContainer {
+    -fx-background-color: linear-gradient(to bottom, red, black);
+    -fx-font-family: "Chiller";
+}
+
+#collectionPane, #collectionScroll {
     -fx-background-color: linear-gradient(to bottom, red, black);
     -fx-font-family: "Chiller";
 }
