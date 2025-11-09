@@ -111,14 +111,15 @@ public class Setup {
                     String cardName = parts[1];
                     Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
 
+                    ArrayList<Card> playerCollection = currentPlayer.getCollection() == null ? new ArrayList<Card>() : currentPlayer.getCollection();
                     for (Card card : worldCardsList) {
                         if (card.getName().equals(cardName)) {
-                            ArrayList<Card> playerCollection = currentPlayer.getCollection() == null ? new ArrayList<Card>() : currentPlayer.getCollection();
-                            playerCollection.add(card);
-                            currentPlayer.setCollection(playerCollection);
+                            playerCollection.add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
                             break;
                         }
                     }
+                    currentPlayer.setCollection(playerCollection);
+
 
                 } //innentol vannak a csak!!! test funkciok
                 case "uj pakli" -> {
