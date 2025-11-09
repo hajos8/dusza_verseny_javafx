@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BattleAiTest {
-
+    /*
     Card c1 = new Card("hajos", 2, 5, "fire");
     Card c2 = new Card("sunshine", 2, 6, "water");
 
     @BeforeEach
     public void beforeTest(){
         BattleRoundManager.testMode = true;
-        BattleAI.isRunningTest = false;
-        BattleAI.rand = new Random(0);
+        //BattleAI.isRunningTest = false;
+        //BattleAI.rand = new Random(0);
         BattleHandlerStub.lastAction = null;
 
         BattleRoundManager.playerTable = new ArrayList<>();

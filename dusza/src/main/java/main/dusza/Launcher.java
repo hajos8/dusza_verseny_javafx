@@ -1,6 +1,6 @@
 package main.dusza;
 
-import javafx.application.Application;
+import jasvafx.application.Application;
 import main.dusza.main.BattleRoundManager;
 import main.dusza.setup.Setup;
 
@@ -15,7 +15,7 @@ public class Launcher {
         }
         else if(args.length == 1 && Objects.equals(args[0], "--ui")){
             //GUI mode
-            String path = "src/main/resources/main/dusza/in.txt"; //default world for GUI
+            String path = "in.txt"; //default world for GUI
             Setup.generateWorld(path); // Generates the world from the input file
 
             Application.launch(DamareenApplication.class, args);
