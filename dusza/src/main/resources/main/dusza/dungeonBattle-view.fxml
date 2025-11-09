@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.DungeonBattle">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="dungeonName" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="1080.0" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.028421051800251007" green="0.5684210658073425" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.460406094789505" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <HBox fx:id="dungeonDeckHBox" prefHeight="200.0" prefWidth="1080.0" />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox fx:id="table" alignment="CENTER" maxHeight="320.0" maxWidth="800.0" minHeight="320.0" minWidth="800.0" prefHeight="320.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="enemyTable" maxHeight="160.0" maxWidth="600.0" minHeight="160.0" minWidth="600.0" prefHeight="160.0" prefWidth="600.0" />
+            <HBox fx:id="playerTable" maxHeight="160.0" maxWidth="600.0" minHeight="160.0" minWidth="600.0" prefHeight="160.0" prefWidth="600.0" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" >
+         <children>
+            <HBox fx:id="playerDeckHBox" prefHeight="200.0" prefWidth="1080.0" />
+            <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="1080.0" textAlignment="CENTER">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+         </children>
+      </VBox>
+   </bottom>
+   <right>
+      <VBox prefHeight="320.0" prefWidth="268.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="264.0" text="Action" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Label>
+            <ListView id="actionsListview" fx:id="actionsListview" prefHeight="200.0" prefWidth="244.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ListView>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>
