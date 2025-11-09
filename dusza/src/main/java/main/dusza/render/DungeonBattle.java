@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
+import main.dusza.main.BattleHandler;
 import main.dusza.main.BattleRoundManager;
 import main.dusza.main.GameData;
 
@@ -36,6 +37,8 @@ public class DungeonBattle implements Initializable {
 
     public boolean isDungeon = false;
     private volatile CompletableFuture<Card> waitingChoice;
+    private volatile Card selectedAttacker;
+    private volatile Card selectedDefender;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,18 +94,17 @@ public class DungeonBattle implements Initializable {
     }
 
     private VBox wrapCard(atlantafx.base.controls.Card uiCard, String id, String handlerName, boolean isDungeon) {
-        System.out.println(id + ": " + handlerName);
         VBox box = new VBox(uiCard);
         box.setId(id);
         if (!isDungeon) {
             if (handlerName.equals("handleAttackClick")) {
                 box.setOnMouseClicked(this::handleAttackPlayerClick);
             } else {
-                if (handlerName.equals("handleAttackEnemyClick")) {
-                    box.setOnMouseClicked(this::handleAttackEnemyClick);
-                } else {
-                    box.setOnMouseClicked(this::handleCardClick);
-                }
+                box.setOnMouseClicked(this::handleCardClick);
+            }
+        } else {
+            if (handlerName.equals("handleAttackEnemyClick")) {
+                box.setOnMouseClicked(this::handleAttackEnemyClick);
             }
         }
         return box;
@@ -183,14 +185,27 @@ public class DungeonBattle implements Initializable {
             waitingChoice = null;
         }
     }
-    
-    private void handleAttackPlayerClick (MouseEvent e) {
+
+    private void handleAttackPlayerClick(MouseEvent e) {
         Node src = (Node) e.getSource();
         String id = src.getId();
-        System.out.println("handleAttackPlayerClick");
+
+        for (Card card : BattleRoundManager.playerTable) {
+            if (Objects.equals(card.getName(), id)) selectedAttacker = card;
+        }
     }
 
-    private void handleAttackEnemyClick (MouseEvent e) {
-        System.out.println("handleAttackEnemyClick");
+    private void handleAttackEnemyClick(MouseEvent e) {
+        Node src = (Node) e.getSource();
+        String id = src.getId();
+
+        if (!selectedAttacker.getName().isEmpty()) {
+            for (Card card : BattleRoundManager.enemyTable) {
+                if (Objects.equals(card.getName(), id)) selectedDefender = card;
+            }
+
+            BattleHandler.attack("jatekos", selectedAttacker, selectedDefender);
+            deckGenerator(enemyTable, BattleRoundManager.enemyTable, "handleAttackEnemyClick", true);
+        }
     }
 }
