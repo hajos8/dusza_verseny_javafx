@@ -112,27 +112,22 @@ public class BattleHandler {
         }
         BattleRoundManager.logBuilder
                 .append(defender.getName())
-                .append(";")
-                .append(defender.getHp()) //0 helyett a rendes hp erteke
-                .append("\n");
+                .append(";");
 
         if(defender.getHp() <= 0){
-            switch (attackingPlayer){
-                case "jatekos" -> {
-                    BattleRoundManager.enemyTable.remove(defender);
-                    if(!BattleRoundManager.enemyTable.isEmpty()){
-                        // masodik tamadas, ha van meg ellenfel a tablan
-                        BattleAI.generateTurn("jatekos");
-                    }
+            BattleRoundManager.logBuilder.append("0").append("\n");
+
+            if(attackingPlayer.equals("kazamata")){
+                BattleRoundManager.playerTable.remove(defender);
+                if(!BattleRoundManager.playerTable.isEmpty()){
+                    // masodik tamadas, ha van meg ellenfel a tablan
+                    BattleAI.generateTurn("kazamata");
                 }
-                case "kazamata" -> {
-                    BattleRoundManager.playerTable.remove(defender);
-                    if(!BattleRoundManager.playerTable.isEmpty()){
-                        // masodik tamadas, ha van meg ellenfel a tablan
-                        BattleAI.generateTurn("kazamata");
-                    }
-                }
+
             }
+        }
+        else{
+            BattleRoundManager.logBuilder.append(defender.getHp()).append("\n");
         }
     }
 
