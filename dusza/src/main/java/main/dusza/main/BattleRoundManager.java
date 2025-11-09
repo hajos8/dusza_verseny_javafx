@@ -95,7 +95,7 @@ public class BattleRoundManager {
             logBuilder.append("\n");
             roundCounter++;
 
-            System.out.println(logBuilder.toString());
+            //System.out.println(logBuilder.toString());
         }
         while(
                 !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
