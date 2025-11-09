@@ -90,12 +90,13 @@ public class BattleRoundManager {
                             .append(chosen.getType());
 
                     Platform.runLater(() -> ui.updateTable("jatekos"));
+                    System.out.println("Működj!");
                 }
             }
             logBuilder.append("\n");
             roundCounter++;
 
-            System.out.println(logBuilder.toString());
+            //System.out.println(logBuilder.toString());
         }
         while(
                 !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
