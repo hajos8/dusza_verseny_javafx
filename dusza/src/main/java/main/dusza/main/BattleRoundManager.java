@@ -6,6 +6,7 @@ import main.dusza.gameElements.Dungeon;
 import main.dusza.render.DungeonBattle;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 
 import static main.dusza.main.BattleAI.*;
@@ -77,8 +78,7 @@ public class BattleRoundManager {
 
         if(playerHand.isEmpty() && playerTable.isEmpty()){
             logBuilder
-                    .append("kazamata nyert")
-                    .append(";")
+                    .append("jatekos vesztett")
                     .append("\n");
         }
         else{
@@ -89,8 +89,7 @@ public class BattleRoundManager {
             for(Dungeon dungeon : GameData.worldDungeonList){
                 if(dungeon.getName().equals(dungeonName)){
                     logBuilder
-                            .append(dungeon.getPrize())
-                            .append(";")
+                            .append(Objects.equals(dungeon.getPrize(), "kartya") ? "" : dungeon.getPrize() + ";")
                             .append(lastPlayedPlayerCard.getName());
 
                     //TODO prize handling
@@ -116,6 +115,9 @@ public class BattleRoundManager {
                             if(testMode){
                                 for(Card card : GameData.worldCardsList){
                                     if(!GameData.PlayersList.getFirst().getCollection().contains(card)) {
+                                        if(card instanceof main.dusza.gameElements.LeaderCard){
+                                            continue;
+                                        }
                                         GameData.PlayersList.getFirst().getCollection().add(card);
                                         break;
                                     }

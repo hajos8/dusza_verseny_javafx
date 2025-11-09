@@ -12,8 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import main.dusza.ShowDatas;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Player;
+import main.dusza.main.BattleRoundManager;
 import main.dusza.main.GameData;
 
 import java.io.FileNotFoundException;
@@ -31,9 +33,10 @@ public class GameController implements Initializable {
 
     public static Player currentPlayer = GameData.PlayersList.getFirst();
     public static ArrayList<Card> playerDeck = new ArrayList<>();
-    ArrayList<Card> playerCollection = currentPlayer.getCollection();
+    ArrayList<Card> playerCollection = new ArrayList<>();
 
     int collectionHalfSize = 0;
+    int chosenCardsCount = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -42,13 +45,22 @@ public class GameController implements Initializable {
         collectionHBox.setSpacing(12);
         deckHBox.setSpacing(12);
 
+        // deep-copy deck
+        for(Card card : currentPlayer.getCollection()){
+            playerCollection.add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
+        }
+        GameData.PlayersList.getFirst().setDeck(new ArrayList<>());
+        playerDeck.clear();
+
         if (playerCollection.size() % 2 != 0) {
-            collectionHalfSize = (int) Math.ceil( (double) playerCollection.size() / 2 );
+            collectionHalfSize = currentPlayer.getCollection().size() / 2 + 1;
         } else {
-            collectionHalfSize = playerCollection.size() / 2;
+            collectionHalfSize = currentPlayer.getCollection().size() / 2;
         }
 
-        task.setText("Válassz ki " + collectionHalfSize + " darab kártyát!");
+        chosenCardsCount = playerDeck.size();
+
+        task.setText("Válassz ki " + (collectionHalfSize - chosenCardsCount) + " darab kártyát!");
         renderAll();
     }
 
@@ -93,6 +105,7 @@ public class GameController implements Initializable {
         return box;
     }
 
+    @FXML
     private void handleCardClick(MouseEvent e) {
         Node source = (Node) e.getSource();
         String id = source.getId();
@@ -107,6 +120,8 @@ public class GameController implements Initializable {
                 playerDeck.add(inCollection);
                 playerCollection.remove(inCollection);
                 stateChanged = true;
+                chosenCardsCount++;
+                task.setText("Válassz ki " + (collectionHalfSize - chosenCardsCount) + " darab kártyát!");
             } else {
                 Card lastFromDeck = playerDeck.getLast();
                 playerCollection.add(lastFromDeck);
