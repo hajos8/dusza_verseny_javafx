@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import static main.dusza.main.BattleAI.*;
 
 public class Battle {
+
+    public static boolean isRunningTest=false;
+
     public static boolean testMode = true;
 
     public static ArrayList<Card> playerHand;
@@ -18,14 +21,16 @@ public class Battle {
     public static void main(){
         BattleHandler.fillUpBattleHands("", "Teszt1a Kazamata");
 
-        do{
-            generateTurn("kazamata");
-            if(testMode) generateTurn("player");
+        if(!isRunningTest) {
+            do {
+                generateTurn("kazamata");
+                if (testMode) generateTurn("player");
+            }
+            while (
+                    !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
+                            &&
+                            !(enemyHand.isEmpty() && enemyTable.isEmpty()) //check if enemy have more cards
+            );
         }
-        while(
-                !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
-                &&
-                !(enemyHand.isEmpty() && enemyTable.isEmpty()) //check if enemy have more cards
-        );
     }
 }
