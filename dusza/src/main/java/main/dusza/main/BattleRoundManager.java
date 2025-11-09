@@ -47,28 +47,55 @@ public class BattleRoundManager {
             generateTurn("kazamata");
 
             if (!testMode) {
-                Platform.runLater(() -> ui.updateTable("kazamata"));
+                Platform.runLater(() -> {
+                    ui.updateTable("kazamata");
+                });
             }
 
-            logBuilder
-                    .append(roundCounter)
-                    .append(".kor")
-                    .append(";")
-                    .append("jatekos")
-                    .append(";");
+            if(testMode) {
+                if(playerHand.isEmpty() && playerTable.isEmpty()){
+                    break;
+                }
+                logBuilder
+                        .append(roundCounter)
+                        .append(".kor")
+                        .append(";")
+                        .append("jatekos")
+                        .append(";");
 
-            if(testMode) generateTurn("player");
+                generateTurn("player");
+            }
             else{
+                logBuilder
+                        .append(roundCounter)
+                        .append(".kor")
+                        .append(";")
+                        .append("jatekos")
+                        .append(";");
+
                 Card chosen = ui.awaitPlayerChoiceFromHand(playerHand);
                 if (chosen != null) {
                     lastPlayedPlayerCard = chosen;
                     playerHand.remove(chosen);
                     playerTable.add(chosen);
+
+                    logBuilder
+                            .append("kijatszik;")
+                            .append(chosen.getName())
+                            .append(";")
+                            .append(chosen.getDmg())
+                            .append(";")
+                            .append(chosen.getHp())
+                            .append(";")
+                            .append(chosen.getType());
+
                     Platform.runLater(() -> ui.updateTable("jatekos"));
                 }
             }
             logBuilder.append("\n");
             roundCounter++;
+
+            System.out.println(logBuilder.toString());
         }
         while(
                 !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
@@ -92,8 +119,6 @@ public class BattleRoundManager {
                             .append(Objects.equals(dungeon.getPrize(), "kartya") ? "" : dungeon.getPrize() + ";")
                             .append(lastPlayedPlayerCard.getName());
 
-                    //TODO prize handling
-
                     switch(dungeon.getPrize()){
                         case "eletero" -> {
                             for(Card card : GameData.PlayersList.getFirst().getDeck()){
@@ -112,26 +137,17 @@ public class BattleRoundManager {
                             }
                         }
                         case "kartya" -> {
-                            if(testMode){
-                                for(Card card : GameData.worldCardsList){
-                                    if(!GameData.PlayersList.getFirst().getCollection().contains(card)) {
-                                        if(card instanceof main.dusza.gameElements.LeaderCard){
-                                            continue;
-                                        }
-                                        GameData.PlayersList.getFirst().getCollection().add(card);
-                                        break;
+
+                            for(Card card : GameData.worldCardsList){
+                                if(!GameData.PlayersList.getFirst().getCollection().contains(card)) {
+                                    if(card instanceof main.dusza.gameElements.LeaderCard){
+                                        continue;
                                     }
+                                    GameData.PlayersList.getFirst().getCollection().add(card);
+                                    break;
                                 }
                             }
-                            else{
-                                Card chosen = ui.awaitPlayerChoiceFromHand(playerHand);
-                                if (chosen != null) {
-                                    lastPlayedPlayerCard = chosen;
-                                    playerHand.remove(chosen);
-                                    playerTable.add(chosen);
-                                    Platform.runLater(() -> ui.updateTable("jatekos"));
-                                }
-                            }
+
 
                         }
                     }

@@ -2,48 +2,43 @@ package main.dusza.main;
 
 import main.dusza.gameElements.Card;
 
-import java.util.Random;
-
 public class BattleAI {
-    public static Random rand = new Random();
+    public static Card lastPlayedPlayerCard;
 
     public static void generateTurn(String player){
         //TODO implement AI based on difficutly
 
         switch(player){
             case "player" -> { //test modnal player is AI
-                if(!Battle.playerTable.isEmpty()){
+                if(!BattleRoundManager.playerTable.isEmpty()){
                     //ha nem ures a tabla tamad
-                    int randomAttackerIndex = rand.nextInt(Battle.playerTable.size());
-                    Card attacker = Battle.playerTable.get(randomAttackerIndex);
+                    Card attacker = BattleRoundManager.playerTable.getFirst();
 
+                    Card defender = BattleRoundManager.enemyTable.getFirst();
+                    BattleHandler.attack("jatekos", attacker, defender);
 
-                    int randomDefenderIndex = rand.nextInt(Battle.enemyTable.size());
-                    Card defender = Battle.enemyTable.get(randomDefenderIndex);
-                    BattleHandler.attack("player", attacker, defender);
+                    lastPlayedPlayerCard = BattleRoundManager.playerTable.getFirst();
                 }
                 else{
                     //ha ures a tabla kijatszik
-                    int randomIndex = rand.nextInt(Battle.playerHand.size());
-                    Card cardToPlay = Battle.playerHand.get(randomIndex);
-                    BattleHandler.playCard("player", cardToPlay);
+                    Card cardToPlay = BattleRoundManager.playerHand.getFirst();
+                    BattleHandler.playCard("jatekos", cardToPlay);
+
+                    lastPlayedPlayerCard = cardToPlay;
                 }
 
             }
             case "kazamata" ->{
-                if(!Battle.enemyTable.isEmpty()){
+                if(!BattleRoundManager.enemyTable.isEmpty()){
                     //ha nem ures a tabla tamad
-                    int randomAttackerIndex = rand.nextInt(Battle.enemyTable.size());
-                    Card attacker = Battle.enemyTable.get(randomAttackerIndex);
+                    Card attacker = BattleRoundManager.enemyTable.getFirst();
 
-                    int randomDefenderIndex = rand.nextInt(Battle.playerTable.size());
-                    Card defender = Battle.playerTable.get(randomDefenderIndex);
+                    Card defender = BattleRoundManager.playerTable.getFirst();
                     BattleHandler.attack("kazamata", attacker, defender);
                 }
                 else{
                     //ha ures a tabla kijatszik
-                    int randomIndex = rand.nextInt(Battle.enemyHand.size());
-                    Card cardToPlay = Battle.enemyHand.get(randomIndex);
+                    Card cardToPlay = BattleRoundManager.enemyHand.getFirst();
                     BattleHandler.playCard("kazamata", cardToPlay);
                 }
             }

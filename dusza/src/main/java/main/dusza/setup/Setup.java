@@ -1,11 +1,14 @@
 package main.dusza.setup;
 
+import main.dusza.fileHandling.BattleLogSaver;
+import main.dusza.fileHandling.PlayerSaver;
 import main.dusza.fileHandling.TxtParser;
+import main.dusza.fileHandling.WorldSaver;
 import main.dusza.gameElements.Card;
 import main.dusza.gameElements.Dungeon;
 import main.dusza.gameElements.LeaderCard;
 import main.dusza.gameElements.Player;
-import main.dusza.main.BattleHandler;
+import main.dusza.main.BattleRoundManager;
 
 import java.util.ArrayList;
 
@@ -121,9 +124,9 @@ public class Setup {
                 case "uj pakli" -> {
                     String[] cardNames = parts[1].split(",");
 
-                    Player currentPlayer = PlayersList.getLast(); // TODO multiplayer
+                    Player currentPlayer = PlayersList.getFirst(); // TODO multiplayer
 
-                    ArrayList<Card> playerDeck = currentPlayer.getDeck();
+                    ArrayList<Card> playerDeck = currentPlayer.getDeck() == null ? new ArrayList<Card>() : currentPlayer.getDeck();
                     for (String cardName : cardNames) {
                         for (Card card : worldCardsList) {
                             if (card.getName().equals(cardName)) {
@@ -135,13 +138,14 @@ public class Setup {
                     currentPlayer.setDeck(playerDeck);
                 }
                 case "export vilag" -> {
-
+                    WorldSaver.saveWorld(parts[1]);
                 }
                 case "export jatekos" -> {
-                    // TODO
+                    PlayerSaver.savePlayerData(parts[1]);
                 }
                 case "harc" -> {
-
+                    BattleRoundManager.battle(parts[1], null);
+                    BattleLogSaver.saveBattleLog(parts[2]);
                 }
 
             }

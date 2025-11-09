@@ -24,6 +24,6 @@ public class Player {
         this.collection = collection;
     }
     public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
+        this.deck = deck != null ? deck : new ArrayList<>();
     }
 }

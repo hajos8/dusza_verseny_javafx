@@ -16,7 +16,7 @@ import java.net.URL;
 
 public class StartDamareenController {
 
-    @FXML public AnchorPane container;
+    @FXML public AnchorPane startContainer;
     @FXML public MFXButton startButton;
     @FXML public Label titleLabel;
     @FXML public Label usernameLabel;
@@ -25,7 +25,7 @@ public class StartDamareenController {
 
 
     @FXML
-    protected void handleStartButton() {
+    public void handleStartButton() {
         startButton.setVisible(false);
         titleLabel.setVisible(false);
         usernameLabel.setVisible(true);
@@ -34,7 +34,7 @@ public class StartDamareenController {
     }
 
     @FXML
-    protected void handlePlayButton() throws IOException {
+    public void handlePlayButton() throws IOException {
 
         String username = "Player";
 

@@ -9,14 +9,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="container" fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.StartDamareenController">
+<AnchorPane id="startContainer" fx:id="startContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.StartDamareenController">
    <children>
-      <MFXButton id="startButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="253.0" onAction="#handleStartButton" text="Indítás" textAlignment="CENTER">
+      <MFXButton id="startButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="538.0" onAction="#handleStartButton" text="Indítás" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </MFXButton>
-      <Label id="titleLabel" fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="84.0" prefHeight="115.0" prefWidth="233.0" text="Damareen" textAlignment="CENTER">
+      <Label id="titleLabel" fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="423.0" layoutY="189.0" prefHeight="115.0" prefWidth="233.0" text="Damareen" textAlignment="CENTER">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.31060607482989633" startY="0.26515151515151514">
                <stops>
@@ -37,17 +37,33 @@
             <Font name="Chiller" size="80.0" />
          </font>
       </Label>
-      <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="84.0" prefHeight="115.0" prefWidth="442.0" text="Add meg a játékosnevedet:" textAlignment="CENTER" textFill="RED" visible="false">
-         <font>
-            <Font name="Candara" size="36.0" />
-         </font>
+      <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="215.0" layoutY="189.0" prefHeight="115.0" prefWidth="650.0" text="Add meg a játékosnevedet:" textAlignment="CENTER" visible="false">
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <MFXTextField id="usernameTextField" fx:id="usernameTextField" layoutX="150.0" layoutY="179.0" maxHeight="40.0" maxWidth="300.0" minHeight="40.0" minWidth="300.0" prefHeight="40.0" prefWidth="300.0" promptText="Játékosnév" visible="false">
+      <MFXTextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="390.0" layoutY="360.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" promptText="Játékosnév" visible="false">
          <font>
             <Font size="15.0" />
          </font>
+         <textFill>
+            <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
+         </textFill>
       </MFXTextField>
-      <MFXButton id="playButton" fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="253.0" onAction="#handlePlayButton" text="Játék indítása" textAlignment="CENTER" visible="false">
+      <MFXButton id="playButton" fx:id="playButton" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="538.0" onAction="#handlePlayButton" text="Játék indítása" textAlignment="CENTER" visible="false">
          <font>
             <Font size="20.0" />
          </font>
