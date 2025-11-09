@@ -6,9 +6,10 @@
     -fx-pref-height: 100px;
 }
 
-#startContainer {
+#startContainer, #dungeonpaint {
     -fx-background-color: linear-gradient(to bottom, red, black);
     -fx-font-family: "Chiller";
+
 }
 
 #titleLabel, #usernameLabel {
@@ -38,3 +39,13 @@
     -fx-border-radius: 300;
     -fx-prompt-text-fill: white;
 }
+
+#smallDungeon, #hardDungeon, #simpleDungeon{
+    -fx-border-color:black;
+    -fx-border-radius:5px;
+    -fx-border-size:2px;
+    -fx-padding:5;
+    -fx-border-style:solid;
+    -fx-background-radius:5;
+}
+
