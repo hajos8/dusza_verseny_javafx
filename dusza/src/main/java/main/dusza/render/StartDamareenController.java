@@ -25,7 +25,7 @@ public class StartDamareenController {
 
 
     @FXML
-    protected void handleStartButton() {
+    public void handleStartButton() {
         startButton.setVisible(false);
         titleLabel.setVisible(false);
         usernameLabel.setVisible(true);
@@ -34,7 +34,7 @@ public class StartDamareenController {
     }
 
     @FXML
-    protected void handlePlayButton() throws IOException {
+    public void handlePlayButton() throws IOException {
 
         String username = "Player";
 

@@ -1,16 +1,11 @@
 package main.dusza.fileHandling;
 
+import main.dusza.Launcher;
 import main.dusza.gameElements.Card;
-import main.dusza.gameElements.Dungeon;
-import main.dusza.gameElements.LeaderCard;
 import main.dusza.main.GameData;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-
-
 
 public class PlayerSaver {
 
@@ -46,7 +41,7 @@ public class PlayerSaver {
             }
 
             if(!isRunningTest){
-                FileWriter fileWriter = new FileWriter(filename);
+                FileWriter fileWriter = new FileWriter(Launcher.defaultOutputPath + filename);
                 fileWriter.write(fileContent.toString());
                 fileWriter.close();
             }
