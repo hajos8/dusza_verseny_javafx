@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="startContainer" fx:id="startContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.StartDamareenController">
+<AnchorPane id="startContainer" fx:id="startContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.dusza.render.StartDamareenController">
    <children>
       <MFXButton id="startButton" fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="538.0" onAction="#handleStartButton" text="Indítás" textAlignment="CENTER">
          <font>
@@ -55,7 +52,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <MFXTextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="390.0" layoutY="360.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" promptText="Játékosnév" textLimit="20" visible="false">
+      <MFXTextField id="usernameTextField" fx:id="usernameTextField" alignment="CENTER" layoutX="390.0" layoutY="360.0" maxHeight="100.0" maxWidth="300.0" minHeight="100.0" minWidth="300.0" onAction="#handlePlayButton" prefHeight="100.0" prefWidth="300.0" promptText="Játékosnév" textLimit="20" visible="false">
          <font>
             <Font size="15.0" />
          </font>

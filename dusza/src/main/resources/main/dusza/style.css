@@ -8,9 +8,10 @@
     -fx-min-width: 100px;
 }
 
-#startContainer, #collectionContainer {
+#startContainer, #collectionContainer, #dungeonpaint {
     -fx-background-color: linear-gradient(to bottom, red, black);
     -fx-font-family: "Chiller";
+
 }
 
 #collectionPane, #collectionScroll {
@@ -56,3 +57,13 @@
     -fx-border-color: gray;
     -fx-text-alignment: center;
 }
+
+#smallDungeon, #hardDungeon, #simpleDungeon{
+    -fx-border-color:black;
+    -fx-border-radius:5px;
+    -fx-border-size:2px;
+    -fx-padding:5;
+    -fx-border-style:solid;
+    -fx-background-radius:5;
+}
+

@@ -91,14 +91,18 @@ public class DungeonBattle implements Initializable {
     }
 
     private VBox wrapCard(atlantafx.base.controls.Card uiCard, String id, String handlerName, boolean isDungeon) {
-
+        System.out.println(id + ": " + handlerName);
         VBox box = new VBox(uiCard);
         box.setId(id);
         if (!isDungeon) {
             if (handlerName.equals("handleAttackClick")) {
-                box.setOnMouseClicked(this::handleAttackClick);
+                box.setOnMouseClicked(this::handleAttackPlayerClick);
             } else {
-                box.setOnMouseClicked(this::handleCardClick);
+                if (handlerName.equals("handleAttackEnemyClick")) {
+                    box.setOnMouseClicked(this::handleAttackEnemyClick);
+                } else {
+                    box.setOnMouseClicked(this::handleCardClick);
+                }
             }
         }
         return box;
@@ -109,33 +113,17 @@ public class DungeonBattle implements Initializable {
             case "jatekos" -> {
                 deckGenerator(playerDeckHBox, BattleRoundManager.playerHand, "handleCardClick", false);
                 deckGenerator(playerTable, BattleRoundManager.playerTable, "handleAttackClick", false);
+                updateLogs(BattleRoundManager.logBuilder);
             }
             case "kazamata" -> {
                 deckGenerator(dungeonDeckHBox, BattleRoundManager.enemyHand, "handleCardClick", true);
-                deckGenerator(enemyTable, BattleRoundManager.enemyTable, "handleAttackClick", true);
+                deckGenerator(enemyTable, BattleRoundManager.enemyTable, "handleAttackEnemyClick", true);
+                updateLogs(BattleRoundManager.logBuilder);
             }
         }
     }
 
     public void updateLogs(StringBuilder logs){
-        //actionsListview
-        /*
-        harc kezdodik;Teszt1a Kazamata
-
-        1.kor;kazamata;kijatszik;Sadan;2;4;levego
-        1.kor;jatekos;kijatszik;Corky;2;4;fold
-
-        2.kor;kazamata;tamad;Sadan;4;Corky;0
-        2.kor;jatekos;kijatszik;Kira;2;7;levego
-
-        3.kor;kazamata;tamad;Sadan;2;Kira;5
-        3.kor;jatekos;tamad;Kira;2;Sadan;2
-
-        4.kor;kazamata;tamad;Sadan;2;Kira;3
-        4.kor;jatekos;tamad;Kira;2;Sadan;0
-
-        jatekos nyert;eletero;Kira
-        */
         String readableLogs = String.valueOf(logs);
         StringBuilder formattedLogs = new StringBuilder();
 
@@ -146,26 +134,15 @@ public class DungeonBattle implements Initializable {
 
             if(parts.length > 3){
                 String name = Objects.equals(parts[1], "jatekos") ? GameData.PlayersList.getFirst().getName() : "Kazamata";
-                printOut = parts[0] + name + " ";
+                printOut = parts[0] + name + ": ";
 
                 printOut = printOut.replace("kor", " Kör: ");
 
                 switch(parts[2]){
                     case "kijatszik" -> {
-                        /*parts[3] //neve
-                        parts[4] //dmg
-                        parts[5] //hp
-                        parts[6] //element*/
-                        // TODO - A típusok szép kiírása mindenhol!
                         printOut += " kijátszotta a " + parts[3] + " kártyát (" + parts[4] + "/" + parts[5] + ", " + parts[6] + ")";
                     }
                     case "tamad" ->{
-                        /*
-                        parts[3] //tamado
-                        parts[4] //tamado sebzese
-                        parts[5] //vedo
-                        parts[6] //vedo maradek elete
-                        */
                         printOut += parts[3] + " kártya támadt, sebzése: " + parts[4] + ", védője: " +  parts[5] + ", védője megmaradt élete: " +  parts[6];
                     }
                 }
@@ -207,8 +184,13 @@ public class DungeonBattle implements Initializable {
         }
     }
     
-    private void handleAttackClick (MouseEvent e) {
+    private void handleAttackPlayerClick (MouseEvent e) {
         Node src = (Node) e.getSource();
         String id = src.getId();
+        System.out.println("handleAttackPlayerClick");
+    }
+
+    private void handleAttackEnemyClick (MouseEvent e) {
+        System.out.println("handleAttackEnemyClick");
     }
 }
