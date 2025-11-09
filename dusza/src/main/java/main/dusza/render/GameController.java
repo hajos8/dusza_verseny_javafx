@@ -57,6 +57,9 @@ public class GameController implements Initializable {
         }
 
         // put buffed cards into collection
+        if(currentPlayer.getDeck() == null){
+            currentPlayer.setDeck(new ArrayList<>());
+        }
         for(Card deckCard : currentPlayer.getDeck()){
             for(Card collectionCard : playerCollection){
                 if(deckCard.getName().equals(collectionCard.getName())){
