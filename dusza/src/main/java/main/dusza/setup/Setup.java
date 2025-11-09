@@ -144,7 +144,7 @@ public class Setup {
                     PlayerSaver.savePlayerData(parts[1]);
                 }
                 case "harc" -> {
-                    BattleRoundManager.battle(parts[1]);
+                    BattleRoundManager.battle(parts[1], null);
                     BattleLogSaver.saveBattleLog(parts[2]);
                 }
 
