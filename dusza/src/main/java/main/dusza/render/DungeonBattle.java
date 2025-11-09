@@ -1,9 +1,7 @@
 package main.dusza.render;
 
 import javafx.application.Platform;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -205,7 +203,8 @@ public class DungeonBattle implements Initializable {
             }
 
             BattleHandler.attack("jatekos", selectedAttacker, selectedDefender);
-            deckGenerator(enemyTable, BattleRoundManager.enemyTable, "handleAttackEnemyClick", true);
+            updateTable("kazamata");
+            System.out.println("handleAttackEnemyClick");
         }
     }
 }
