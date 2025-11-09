@@ -181,12 +181,4 @@ public class GameController implements Initializable {
             }
         }
     }
-
-    public void hardDungeon() { /* TODO */ }
-
-    public void simpleDungeon() { /* TODO */ }
-
-    public void smallDungeon() {
-        /* TODO */
-    }
 }
