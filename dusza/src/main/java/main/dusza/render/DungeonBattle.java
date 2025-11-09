@@ -105,7 +105,6 @@ public class DungeonBattle implements Initializable {
     }
 
     public void updateTable (String name) {
-
         switch (name) {
             case "jatekos" -> {
                 deckGenerator(playerDeckHBox, BattleRoundManager.playerHand, "handleCardClick", false);
