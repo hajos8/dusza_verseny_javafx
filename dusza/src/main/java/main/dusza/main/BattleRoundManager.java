@@ -127,9 +127,23 @@ public class BattleRoundManager {
                                     break;
                                 }
                             }
+
+                            for(Card card : GameData.PlayersList.getFirst().getCollection()){
+                                if(card.getName().equals(lastPlayedPlayerCard.getName())) {
+                                    card.setHp(card.getHp() + 2);
+                                    break;
+                                }
+                            }
                         }
                         case "sebzes" -> {
                             for(Card card : GameData.PlayersList.getFirst().getDeck()){
+                                if(card.getName().equals(lastPlayedPlayerCard.getName())) {
+                                    card.setDmg(card.getDmg() + 1);
+                                    break;
+                                }
+                            }
+
+                            for(Card card : GameData.PlayersList.getFirst().getCollection()){
                                 if(card.getName().equals(lastPlayedPlayerCard.getName())) {
                                     card.setDmg(card.getDmg() + 1);
                                     break;
