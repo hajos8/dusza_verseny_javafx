@@ -160,6 +160,7 @@ public class DungeonBattle implements Initializable {
     public Card awaitPlayerChoiceFromHand(ArrayList<Card> playerHand) {
         Platform.runLater(() -> {
             deckGenerator(playerDeckHBox, playerHand, "handleCardClick", false);
+            deckGenerator(playerTable, BattleRoundManager.playerTable, "handleAttackClick", false);
         });
 
         waitingChoice = new CompletableFuture<>();
@@ -188,23 +189,49 @@ public class DungeonBattle implements Initializable {
         Node src = (Node) e.getSource();
         String id = src.getId();
 
+        selectedAttacker = null;
         for (Card card : BattleRoundManager.playerTable) {
-            if (Objects.equals(card.getName(), id)) selectedAttacker = card;
+            if (card != null && Objects.equals(card.getName(), id)) {
+                selectedAttacker = card;
+                break;
+            }
         }
+        // reset selected defender when choosing attacker
+        selectedDefender = null;
     }
 
     private void handleAttackEnemyClick(MouseEvent e) {
+        // require an attacker selected first
+        if (selectedAttacker == null) return;
+
         Node src = (Node) e.getSource();
         String id = src.getId();
 
-        if (!selectedAttacker.getName().isEmpty()) {
-            for (Card card : BattleRoundManager.enemyTable) {
-                if (Objects.equals(card.getName(), id)) selectedDefender = card;
+        selectedDefender = null;
+        for (Card card : BattleRoundManager.enemyTable) {
+            if (card != null && Objects.equals(card.getName(), id)) {
+                selectedDefender = card;
+                break;
             }
-
-            BattleHandler.attack("jatekos", selectedAttacker, selectedDefender);
-            updateTable("kazamata");
-            System.out.println("handleAttackEnemyClick");
         }
+        if (selectedDefender == null) return;
+
+        // perform attack (FX thread) and refresh enemy table
+        BattleHandler.attack("jatekos", selectedAttacker, selectedDefender);
+        deckGenerator(enemyTable, BattleRoundManager.enemyTable, "handleAttackEnemyClick", true);
+
+        // if battle thread is waiting for a play, complete with null to indicate attack happened
+        if (waitingChoice != null && !waitingChoice.isDone()) {
+            waitingChoice.complete(null);
+        }
+
+        // clear selections
+        selectedAttacker = null;
+        selectedDefender = null;
+    }
+
+    private void handleBattleEnd(){
+        DungeonsController dungeonsController = new DungeonsController();
+        dungeonsController.initialize(null, null);
     }
 }

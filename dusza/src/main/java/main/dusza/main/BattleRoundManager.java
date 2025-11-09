@@ -66,6 +66,9 @@ public class BattleRoundManager {
                 generateTurn("player");
             }
             else{
+                if(playerHand.isEmpty() && playerTable.isEmpty()){
+                    break;
+                }
                 logBuilder
                         .append(roundCounter)
                         .append(".kor")
@@ -90,24 +93,23 @@ public class BattleRoundManager {
                             .append(chosen.getType());
 
                     Platform.runLater(() -> ui.updateTable("jatekos"));
-                    System.out.println("Működj!");
                 }
             }
             logBuilder.append("\n");
             roundCounter++;
 
-            //System.out.println(logBuilder.toString());
         }
         while(
                 !(playerHand.isEmpty() && playerTable.isEmpty()) //check if player have more cards
                 &&
                 !(enemyHand.isEmpty() && enemyTable.isEmpty()) //check if enemy have more cards
         );
-
         if(playerHand.isEmpty() && playerTable.isEmpty()){
             logBuilder
                     .append("jatekos vesztett")
                     .append("\n");
+
+            System.exit(0);
         }
         else{
             logBuilder
@@ -166,6 +168,8 @@ public class BattleRoundManager {
 
                         }
                     }
+
+
 
                     break;
                 }
