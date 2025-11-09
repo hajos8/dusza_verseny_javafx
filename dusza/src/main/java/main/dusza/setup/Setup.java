@@ -130,7 +130,8 @@ public class Setup {
                     for (String cardName : cardNames) {
                         for (Card card : worldCardsList) {
                             if (card.getName().equals(cardName)) {
-                                playerDeck.add(card);
+                                //deep copy
+                                playerDeck.add(new Card(card.getName(), card.getDmg(), card.getHp(), card.getType()));
                                 break;
                             }
                         }
