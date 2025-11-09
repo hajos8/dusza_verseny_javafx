@@ -19,7 +19,6 @@
       <VBox fx:id="smallDungeon" layoutX="160.0" layoutY="285.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #7c0000;">
          <children>
             <Label id="smallDungeonLabel" fx:id="smallDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSmallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-            <Label id="smallDungeonLabel" fx:id="smallDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleSmallDungeon" prefHeight="135.0" prefWidth="102.0" text="Kis kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Chiller" size="20.0" />
                </font>
@@ -28,7 +27,6 @@
       </VBox>
       <VBox fx:id="hardDungeon" layoutX="490.0" layoutY="60.0" prefHeight="132.0" prefWidth="98.0" style="-fx-background-color: #3e0000;">
          <children>
-            <Label id="hardDungeonLabel" fx:id="hardDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleHardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
             <Label id="hardDungeonLabel" fx:id="hardDungeonLabel" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#handleHardDungeon" prefHeight="135.0" prefWidth="102.0" text="Nagy kazamata" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Chiller" size="20.0" />
@@ -43,7 +41,6 @@
               </font>
           </Label>
       </VBox>
-       <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="635.0" prefHeight="58.0" prefWidth="206.0" textAlignment="CENTER">
        <Label id="usernameLabel" fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="533.0" layoutY="635.0" prefHeight="58.0" prefWidth="206.0" textAlignment="CENTER">
            <font>
                <Font size="20.0" />
